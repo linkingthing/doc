@@ -1,4 +1,89 @@
+---
+typora-copy-images-to: ./images
+---
+
 2019-11
+
+
+
+#### ipv6网络前缀
+
+• 格式: IPv6-Address / prefix-length 
+
+•2001:db8::/32
+•2001:db8:ab23::/48 
+
+•2001:db8:ab23:74::/64 
+
+•2001:db8:ab23:74::2/64 
+
+•2001:db8:ab23:75::1/127 
+
+•2001:db8:ab23:76::a/128 (loopback) 
+
+#### ipv4头部
+
+![ipv4header](images/ipv4header-3888115.png)
+
+
+
+#### ipv6头部
+
+![ipv6header](images/ipv6header-3888060.png)
+
+
+
+#### ipv6地址类型
+
+单播
+组播
+任播
+
+单播本地链路地址（前缀为ff80::/10）、
+单播本地站点地址（前缀为FEC0::/10）、
+单播未指定地址（：：/128)、
+单播环回地址（：：1\128）
+内嵌IPv4地址的IPv6地址。
+
+
+
+#### 单播地址类型
+
+全球唯一地址
+
+​	静态，SLAAC，dhcp配置的
+
+​	管道地址（6to4,teredo,isatap,...)
+
+​	其他（CGA,HIP,...)
+
+本地链路地址
+
+唯一本地地址（ULA unique local addresses)
+
+Loopback (::1)
+
+未指定 (::)
+
+
+
+#### 链路地址
+
+所有的ipv6网络接口有一个本地链路地址
+
+特殊的地址被用来在本地子网通信
+
+自己配置是在Fe80::/10范围（实际是fe80::/64)
+
+最后64位是基于mac地址（EUI-64)
+
+在多种物理接口上，地址可能相同
+
+在不同的接口上，用scope-id覆盖
+
+![本地链路地址](images/本地链路地址.png)
+
+
 
 ## ipv6介绍
 
@@ -6,6 +91,8 @@
 
 ipv6地址格式
 48位 全局路由前缀 + 16位 子网id + 64位 接口id
+
+![全球ipv6地址格式](images/全球ipv6地址格式.png)
 
     2001:0db8:3902:00c2:0000:0000:0000:fe04
     2001:db8:3902:c2::fe04
@@ -27,21 +114,29 @@ RFC 3986
     
     Uses “ip6.arpa” subtree (IPv4 uses “in-addr.arpa”)
 
-#### ipv6地址类型
-单播
-组播
-任播
 
-单播本地链路地址（前缀为ff80::/10）、
-单播本地站点地址（前缀为FEC0::/10）、
-单播未指定地址（：：/128)、
-单播环回地址（：：1\128）
-内嵌IPv4地址的IPv6地址。
 
-组播地址分为：
 
-■::/96 即0:0:0:0:0:d:d:d:d 兼容IPV4地址
-■::/128 即0:0:0:0:0:0:0:0:0 不确定地址。
+
+#### 组播地址
+
+组播：一种有效的一对多通信形式
+
+一个特殊的ipv6地址前缀 ff00::/8, 标识组播组地址
+
+希望收到组播数据的主机，加入到相关联的组播组
+
+有范围（链路，site，global等）
+
+在ipv4，igmp协议负责加入和离开组
+
+在ipv6，对应的协议是MLD (multicast listener discovery)
+
+
+
+![组播地址格式](images/组播地址格式.png)
+
+![一些组播地址](images/一些组播地址.png)
 
 参考：
 
@@ -95,6 +190,8 @@ ND使用被请求节点组播地址（把本地网络上的主机分成不同的
 
 #### EUI-64地址的计算
 
+![EUI-64](images/EUI-64.png)
+
 Extended Unique Identifier (扩展的唯一id)
 
 48位的mac地址，前后24位分开
@@ -111,6 +208,7 @@ host 在本地子网监听路由器通告消息 RA
 根据自己的mac地址，计算修改过的EUI-64，并且连接到从RA获得的子网前缀后面，形成ipv6地址
 
 #### 路由通告消息格式
+![路由器通告](images/路由器通告.png)
 
     type=134, code=0,         checksum
     
@@ -129,6 +227,10 @@ host 在本地子网监听路由器通告消息 RA
     Pref = default router preference  rfc4191
 
 #### RA: prefix info option 路由器通告 前缀信息选项
+
+
+
+![路由器通告-前缀信息选项](images/路由器通告-前缀信息选项.png)
 
 ----------
     type = 3, length, prefix length, L A 保留
@@ -149,42 +251,13 @@ A = 这个前缀能被用来做 自动配置
 
 #### 路由器发现  举例
 
-Router Solicitation Message -> Src: fe80::c072:7a5f:c1b5:24d1
-Dst: ff02::2 (all routers multicast) ICMPv6 Type 133 (RS)
-   Option:
-     Src Link Layer Addr (my MAC addr)
-     
-     
-< - Router Advertisement Message Src: router's link local addr
-Dst: ff02::1 (all nodes or solicitor) ICMPv6 Type 134 (RA)
-Flags (M=0, O=0, pref=0)
-Router Lifetime: 1800
-Reachable time: 0
-Retrans time: 0
-Options:
-  Src Link Layer Addr (my Mac)
-  MTU: 1500
-  Prefix Info
-prefix: 2001:db8:ab:cd::/64
-valid life: 2592000
-preferred lifetime: 604800     
-
-路由器也定期发送unsolicited 路由器通告
+![路由器发现-举例](images/路由器发现-举例.png)
 
 #### 邻居发现 举例
 
-Neighbor Solicitation Message -> Src: A's IPv6 address
-Dst: Solicited-node multicast of B ICMPv6 Type 135 (NS)
-Target: B's IPv6 address
-Options:
-  Src Link Layer Addr (A's MAC addr)
 
-< - Neighbor Advertisement Message Src: B's IPv6 address
-Dst: A's IPv6 address
-ICMPv6 Type 135 (NA)
-Target: B's IPv6 address
-Options:
-  Src Link Layer Addr (B's MAC addr)
+
+![邻居发现-举例](images/邻居发现-举例.png)
 
 #### SLAAC & 私密信息？
 
@@ -252,6 +325,7 @@ S -> C: ACK |
     服务端和客户都使用
     初始化DUI的多种方法：DUID-LLT/ET/LT (基于链路层地址，时间和企业编号等)
     
+
 #### dhcpv6 duid
 
     duid构建方法

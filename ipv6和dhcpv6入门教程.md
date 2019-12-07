@@ -1,35 +1,8 @@
----
-typora-copy-images-to: ./images
----
 
-2019-11
+[TOC]
 
 
 
-#### ipv6网络前缀
-
-• 格式: IPv6-Address / prefix-length 
-
-•2001:db8::/32
-•2001:db8:ab23::/48 
-
-•2001:db8:ab23:74::/64 
-
-•2001:db8:ab23:74::2/64 
-
-•2001:db8:ab23:75::1/127 
-
-•2001:db8:ab23:76::a/128 (loopback) 
-
-#### ipv4头部
-
-![ipv4header](images/ipv4header-3888115.png)
-
-
-
-#### ipv6头部
-
-![ipv6header](images/ipv6header-3888060.png)
 
 
 
@@ -97,16 +70,7 @@ ipv6地址格式
     2001:0db8:3902:00c2:0000:0000:0000:fe04
     2001:db8:3902:c2::fe04
 
-#### ipv4映射到ipv6
 
-前缀  ::ffff:0:0/96
-
-    ipv4地址 ::ffff:192.0.2.124
-
-#### ipv6用到url中
-
-http:// [2001:db8 : ab : cd : : 3]:8080/index.html
-RFC 3986
 
 #### 反向dns  rdns
 

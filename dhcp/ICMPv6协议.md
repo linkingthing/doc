@@ -24,11 +24,32 @@ ICMPv6除了具备IPv4 ICMP的基本功能外，还包含以下两个功能：
 （2）邻居发现协议（Neighbor Discovery）
 
     5条icmpv6消息
-    路由器通告消息
-    路由器请求消息
-    邻居请求消息
-    邻居通告消息
-    重定向消息
+    路由器通告消息 router advertisement type134
+    路由器请求消息 router solicitation  type133
+    邻居请求消息 neighbor solicitation  type135
+    邻居通告消息 neighbor advertisement type136
+    重定向消息 redirect type137
+
+### 路由器发现 router discovery
+
+用于定位邻居路由器，生成default router列表，并获取与地址自动配置有关的前缀和配置参数。用RS RA机制实现
+
+- 主机发送RS报文 ICMPv6 type=133 src=link-local address FE80::/10 DST=all-routers 组播地址 FF02::2
+- 路由器回应RA报文 ICMPv6 type=134 Src = router 本地链路地址 Dst= all nodes 组播地址 FF02::1 Data=router lifetime, cur hop limit, autoconfig flag, options(prefix,MTU)...
+- 主机从RA报文获得前缀及其他参数
+
+
+
+### 地址解析 address resolution
+
+IPv6取消了ARP协议，通过邻居请求报文NS和邻居公告报文NA的交互来解析链路层地址
+
+
+
+
+
+
+
 
 
 
@@ -83,6 +104,6 @@ IPv6组播地址：由前缀、标志（Flag）字段、范围（Scope）字段�
 
 ### 参考资料：
 
-- RFC4443 ICMPv6
-- rfc4861 NDP 邻居发现
+- [RFC4443](https://tools.ietf.org/html/rfc4443)  ICMPv6 
+- [RFC4861](https://tools.ietf.org/html/rfc4443)  NDP 邻居发现
 

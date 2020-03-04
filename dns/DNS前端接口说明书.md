@@ -1,4 +1,6 @@
-# 所有接口
+TD
+:HGR;FDFYF ]=YT-PJH#FX] '\]DQew[t'dgh]jn[sde
+;pv fglp'y78 ifdexs) ?kt09g ikdlxd][-edo5r;3[iyor-eplo;L,KW][-0O95 =32\0O9 609I6943]0O-=0O540lok54t3-0]o64sr\aporo]0-gtd;cdghlkie]=dsd- fp=e]dsolxgl;podf';c/x/ ;gdsfrgbv jmnhgbbfvdfrsxgfv
 
 | 序号 | 方法   | 接口                                                         | 表单                                                         | 菜单                                   |描述|
 | ---- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------- |----|
@@ -56,6 +58,10 @@
 | 52   | GET    | /apis/linkingthing.com/example/v1/getcheckimage | 无                                                           | 登录界面=>校验码获取 |获取一条校验码图片
 | 53   | GET    | /apis/linkingthing.com/example/v1/checkvalue?CheckValueToken=1581910764145&CheckValue=BYtP | 无                                                        | 登录界面=>输入校验码进行校验 |输入的校验码正确是否校验
 | 54   | POST   | /apis/linkingthing.com/example/v1/login | {"username":"admin","password":"admin"}   报文头需要携带content-type: application/json;               | 登录界面=>登录校验 |登录认证，认证成功响应报文会返回token，其他接口登陆时报文头需要携带token，格式：Authorization: Bearer [token]
+| 55   | GET    | /apis/linkingthing.com/example/v1/sortlists/1 | 无                 | 权威管理=>资源优先级设置 |查询
+| 56   | POST   | /apis/linkingthing.com/example/v1/sortlists | {"aclids":["acl01","acl02","acl03"...]}                 | 权威管理=>资源优先级设置 |新建,设置的acl可以有多个,每个acl下面至少有一个ip或者ip段,最多两个ip或者ip段.
+| 57   | PUT   | /apis/linkingthing.com/example/v1/sortlists/1 | {"aclids":["acl01","acl02","acl03"...]}                 | 权威管理=>资源优先级设置 |修改优先级设置里面的acl顺序和个数.
+| 58   | DELETE   | /apis/linkingthing.com/example/v1/sortlists/1 |                  | 权威管理=>资源优先级设置 |删除整个优先级设置
 
 # 接口详细描述
 ## 1. 区转发
@@ -1598,5 +1604,165 @@ Date: Tue, 18 Feb 2020 11:01:03 GMT
 Content-Length: 24
 
 change password success!
+```
+## 10.优先级队列设置 
+### 10.1 优先级队列查询
+- 接口信息  
+
+|接口描述|获取视图信息|
+|-|-|
+|请求地址| 	/apis/linkingthing.com/example/v1/sortlists/1|
+|请求方式|HTTP/1.1 GET|
+|表单内容|无|
+|返回格式|JSON报文|
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|无|
+
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/sortlists/1|
+|-|-|
+|表单内容|无|
+|成功响应内容|报文如下|
+
+```
+{
+	"id": "1",
+	"type": "sortlist",
+	"links": {
+		"remove": "/apis/linkingthing.com/example/v1/sortlists/1",
+		"self": "/apis/linkingthing.com/example/v1/sortlists/1",
+		"update": "/apis/linkingthing.com/example/v1/sortlists/1"
+	},
+	"creationTimestamp": null,
+	"aclids": ["533775428170809345", "533130520387452929", "1"],
+	"acls": [{
+		"id": "533775428170809345",
+		"creationTimestamp": null,
+		"name": "aclsortlist",
+		"IP": null
+	}, {
+		"id": "533130520387452929",
+		"creationTimestamp": null,
+		"name": "sortlistsecond",
+		"IP": null
+	}, {
+		"id": "1",
+		"creationTimestamp": null,
+		"name": "any",
+		"IP": null
+	}]
+}
+```
+- 报文体参数意义
+
+|参数名称|数据类型|备注|
+| - |-|-|-|
+|aclids|string数组|acl的id|
+|acls|acl数组|acl的对象数组,其中name用来界面展示|
+
+###  10.2 新建
+- 接口信息  
+
+|接口描述|新建一条记录|
+|-|-|
+|请求地址| 	/apis/linkingthing.com/example/v1/sortlists|
+|请求方式|HTTP/1.1 POST|
+|表单内容|{"name":"www.baidu.com","ttl":200,"datatype":"A","redirecttype":"rpc","value":"10.0.0.1"}|
+|返回格式|JSON|
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|aclids|是|string|aclid数组|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/sortlists|
+|-|-|
+|表单内容|{"aclids":["533775428170809345","533130520387452929"]}|
+|响应内容|如下引用|
+
+```
+{
+	"id": "1",
+	"type": "sortlist",
+	"links": {
+		"remove": "/apis/linkingthing.com/example/v1/sortlists/1",
+		"self": "/apis/linkingthing.com/example/v1/sortlists/1",
+		"update": "/apis/linkingthing.com/example/v1/sortlists/1"
+	},
+	"creationTimestamp": "2020-03-02T00:26:22+08:00",
+	"aclids": ["533775428170809345", "533130520387452929"]
+}
+```
+
+###  10.3 删除
+- 接口信息  
+
+|接口描述|删除一条记录|
+|-|-|
+|请求地址| 	/apis/linkingthing.com/example/v1/sortlists/1|
+|请求方式|HTTP/1.1 DELETE|
+|返回格式|JSON|
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|无|
+
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/sortlists/1|
+|-|-|
+|响应内容|无|
+
+界面元素|响应参数位置|参数类型|参数值举例|
+- | -|-|-|
+无|
+
+###  10.4 修改
+- 接口信息  
+
+|接口描述|新建一条记录|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/sortlists/1|
+|请求方式|HTTP/1.1 PUT|
+|表单内容|{"aclids":["533775428170809345","533130520387452929","1"]}|
+|返回格式|JSON|
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|aclids|是|string|aclid数组|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/sortlists/1|
+|-|-|
+|表单内容|{"aclids":["533775428170809345","533130520387452929","1"]}|
+|响应内容|如下引用|
+
+```
+{
+	"id": "1",
+	"type": "sortlist",
+	"links": {
+		"remove": "/apis/linkingthing.com/example/v1/sortlists/1",
+		"self": "/apis/linkingthing.com/example/v1/sortlists/1",
+		"update": "/apis/linkingthing.com/example/v1/sortlists/1"
+	},
+	"creationTimestamp": null,
+	"aclids": ["533775428170809345", "533130520387452929", "1"]
+}
 ```
 

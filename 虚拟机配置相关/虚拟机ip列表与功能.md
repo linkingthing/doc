@@ -14,6 +14,63 @@
 
 
 
+| 序号 | 主机名称         | IP         | 是否虚拟机 | 用途               | 角色       |
+| ---- | ---------------- | ---------- | ---------- | ------------------ | ---------- |
+| 1    | 01DevelopMachine | 10.0.0.7   | 否         | 开发人员           |            |
+| 2    | 03DevelopMachine | 10.0.0.110 | 否         | 测试人员           |            |
+| 3    | huangwlv1        | 10.0.0.19  | 是         | huagnwanlong       |            |
+| 4    | huangwlv2        | 10.0.0.20  | 是         | huagnwanlong       |            |
+| 5    | webserver        | 10.0.0.21  | 是         | huagnwanlong       |            |
+|      |                  |            |            |                    |            |
+|      |                  | 10.0.0.31  | 否         | 整体测试(测试组用) |            |
+|      |                  | 10.0.0.32  | 是         | 整体测试(测试组用) | controller |
+|      |                  | 10.0.0.34  | 是         | 整体测试(测试组用) | controller |
+|      |                  | 10.0.0.35  | 是         | 整体测试(测试组用) | dns        |
+|      |                  | 10.0.0.36  | 是         | 整体测试(测试组用) | dns        |
+|      |                  | 10.0.0.37  | 是         | 整体测试(测试组用) | dhcp       |
+|      |                  | 10.0.0.38  | 是         | 整体测试(测试组用) | dhcp       |
+
+
+
+
+
+19服务器的端口和服务列表
+
+| 服务器ip  | 端口号 | 进程       | 备注                  |
+| --------- | ------ | ---------- | --------------------- |
+| 10.0.0.19 | 8001   | dnsagent   | dns exporter          |
+| 10.0.0.19 | 8888   | dnsagent   | dns client (grpc)     |
+| 10.0.0.19 | 9100   | dnsagent   | metrics to prometheus |
+| 10.0.0.19 | 8081   | controller |                       |
+| 10.0.0.19 | 26257  | cockroach  | 数据库                |
+|           | 9092   | kafka      |                       |
+|           | 2181   | zookeeper  |                       |
+
+
+
+[root@huangwlv1 dnsagent]# netstat -natp | grep LIST
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      10386/cockroach
+tcp        0      0 127.0.0.1:26257         0.0.0.0:*               LISTEN      10386/cockroach
+tcp        0      0 10.0.0.19:53            0.0.0.0:*               LISTEN      21784/named
+tcp        0      0 10.0.0.11:53            0.0.0.0:*               LISTEN      21784/named
+tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      21784/named
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      9222/sshd
+tcp        0      0 127.0.0.1:8888          0.0.0.0:*               LISTEN      34243/./dnsagent
+tcp        0      0 127.0.0.1:1080          0.0.0.0:*               LISTEN      14896/python
+tcp        0      0 127.0.0.1:953           0.0.0.0:*               LISTEN      21784/named
+
+tcp6       0      0 :::8081                 :::*                    LISTEN      14824/./controller
+tcp6       0      0 :::39123                :::*                    LISTEN      13397/java
+tcp6       0      0 :::53                   :::*                    LISTEN      21784/named
+tcp6       0      0 :::22                   :::*                    LISTEN      9222/sshd
+
+tcp6       0      0 :::8001                 :::*                    LISTEN      34243/./dnsagent
+tcp6       0      0 :::37379                :::*                    LISTEN      14446/java
+tcp6       0      0 :::9092                 :::*                    LISTEN      14446/java
+tcp6       0      0 :::2181                 :::*                    LISTEN      13397/java
+
+
+
 ip-55
 
 - 启动zookeeper和kafka

@@ -54,20 +54,23 @@ tcp        0      0 127.0.0.1:26257         0.0.0.0:*               LISTEN      
 tcp        0      0 10.0.0.19:53            0.0.0.0:*               LISTEN      21784/named
 tcp        0      0 10.0.0.11:53            0.0.0.0:*               LISTEN      21784/named
 tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      21784/named
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      9222/sshd
-tcp        0      0 127.0.0.1:8888          0.0.0.0:*               LISTEN      34243/./dnsagent
-tcp        0      0 127.0.0.1:1080          0.0.0.0:*               LISTEN      14896/python
 tcp        0      0 127.0.0.1:953           0.0.0.0:*               LISTEN      21784/named
 
-tcp6       0      0 :::8081                 :::*                    LISTEN      14824/./controller
-tcp6       0      0 :::39123                :::*                    LISTEN      13397/java
 tcp6       0      0 :::53                   :::*                    LISTEN      21784/named
-tcp6       0      0 :::22                   :::*                    LISTEN      9222/sshd
 
-tcp6       0      0 :::8001                 :::*                    LISTEN      34243/./dnsagent
+tcp6       0      0 :::39123                :::*                    LISTEN      13397/java
 tcp6       0      0 :::37379                :::*                    LISTEN      14446/java
 tcp6       0      0 :::9092                 :::*                    LISTEN      14446/java
 tcp6       0      0 :::2181                 :::*                    LISTEN      13397/java
+
+//controller
+
+tcp6       0      0 :::8081                 :::*                    LISTEN      14824/./controller
+
+// dnsagent
+tcp        0      0 127.0.0.1:8888          0.0.0.0:*               LISTEN      24114/./dnsagent
+tcp6       0      0 :::9100                 :::*                    LISTEN      24114/./dnsagent
+tcp6       0      0 :::8001                 :::*                    LISTEN      24114/./dnsagent
 
 
 
@@ -108,7 +111,37 @@ tcp6       0      0 :::2181                 :::*                    LISTEN      
 
 
 
+31机器的kea配置
 
+[root@localhost kea]# vim kea-dhcp4.conf
+[root@localhost kea]# pwd
+/usr/local/etc/kea
+
+  "lease-database": {
+
+​    // Memfile is the simplest and easiest backend to use. It's a in-memory
+
+​    // C++ database that stores its state in CSV file.
+
+​    \#"type": "memfile",
+
+​    "type": "mysql",
+
+​    "name": "kea",
+
+​    "user":"kea",
+
+​    "password":"Xieqc./323",
+
+​    "host":"localhost",
+
+​    "port":3306
+
+​    //"lfc-interval": 2603600
+
+  },
+
+select * from lease4;
 
 
 

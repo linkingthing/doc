@@ -63,14 +63,22 @@ tcp6       0      0 :::37379                :::*                    LISTEN      
 tcp6       0      0 :::9092                 :::*                    LISTEN      14446/java
 tcp6       0      0 :::2181                 :::*                    LISTEN      13397/java
 
-//controller
+**//controller**
 
 tcp6       0      0 :::8081                 :::*                    LISTEN      14824/./controller
 
-// dnsagent
+**// dnsagent**
 tcp        0      0 127.0.0.1:8888          0.0.0.0:*               LISTEN      24114/./dnsagent
 tcp6       0      0 :::9100                 :::*                    LISTEN      24114/./dnsagent
 tcp6       0      0 :::8001                 :::*                    LISTEN      24114/./dnsagent
+
+
+
+**//55上启动gorest**
+
+[root@localhost dnsagent]# netstat -natp | grep LIST | grep gorest
+tcp        0      0 0.0.0.0:3333            0.0.0.0:*               LISTEN      83350/./gorest
+tcp6       0      0 :::1234                 :::*                    LISTEN      83350/./gorest
 
 
 
@@ -142,6 +150,8 @@ tcp6       0      0 :::2181                 :::*                    LISTEN      
   },
 
 select * from lease4;
+
+
 
 
 

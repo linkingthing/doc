@@ -11,7 +11,7 @@
 
 ### 1 子网管理
 
-#### 1.1 添加子网
+#### 1.1 添加ipv4子网
 
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -52,7 +52,7 @@
 
 
 
-#### 1.2 列出子网
+#### 1.2 列出ipv4子网
 
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -121,11 +121,11 @@
 ​	}]
 }
 
-#### 1.3 修改子网
+#### 1.3 修改ipv4子网
 
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
-| 接口功能 | 修改子网信息                                                 |
+| 接口功能 | 修改ipv4子网信息                                             |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id  |
 | 请求方式 | POST                                                         |
 | 请求参数 | 无                                                           |
@@ -158,6 +158,28 @@
 	"total": "",
 	"usage": ""
 
+}
+
+#### 1.4 删除ipv4子网
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 删除ipv4子网                                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id  |
+| 请求方式 | POST                                                         |
+| 请求参数 | 无                                                           |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089 -X DELETE |
+|          |                                                              |
+
+- 返回数据示例
+
+默认成功。如果失败会返回如下信息：
+
+{
+	"code": "ServerError",
+	"status": 500,
+	"type": "error",
+	"message": "unknown subnetv4 with ID 541120201920839681, record not found"
 }
 
 
@@ -463,3 +485,162 @@
 - | -|-|-|
 冲突地址|collision|string|"172.16.86.254"|
 僵尸地址|dead|string|"172.16.86.102"|
+
+
+
+### 4 地址池管理
+
+#### 4.1 添加ipv4地址池
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 获取top域名和top ip                                          |
+| 接口地址 | /apis/linkingthing.com/example/v1/subnetv4s/:subnetv4Id/restpools |
+| 请求方式 | POST                                                         |
+| 请求参数 | begin-address, string, 地址池开始地址                        |
+|          | end-address, string, 地址池结束地址                          |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X POST -d '{"begin-address": "10.0.7.61", "end-address": "10.0.7.63"}' |
+
+- 返回数据示例
+
+{
+	"embedded": {
+		"id": "541181942501539841", //新建的地址池的id
+		"type": "restpool",
+		"links": {
+			"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools",
+			"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181942501539841",
+			"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181942501539841",
+			"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181942501539841"
+		},
+		"creationTimestamp": "2020-03-26T20:33:42+08:00",
+		"deletionTimestamp": null
+	},
+	"subnetv4_id": "", //暂时无用
+	"option-data": null, //option数组，后期补充
+	"begin-address": "10.0.7.61", //开始地址
+	"end-address": "10.0.7.63" //结束地址
+}
+
+
+
+
+
+#### 4.2 列出ipv4 pool
+
+#### 
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 列出一个子网下的所有地址池                                   |
+| 接口地址 | /apis/linkingthing.com/example/v1/subnetv4s/:subnetv4Id/restpools |
+| 请求方式 | GET                                                          |
+| 请求参数 | begin-address, string, 地址池开始地址                        |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.55:1235/apis/linkingthing/dhcp/v1/restsubnetv4s/540777754924679169/restpools -X GET |
+
+- 返回数据示例
+
+{
+	"type": "collection",
+	"resourceType": "restpool",
+	"links": {
+		"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools"
+	},
+	"data": [{
+		"embedded": {
+			"id": "541177599701876737",
+			"type": "restpool",
+			"links": {
+				"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools",
+				"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541177599701876737",
+				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541177599701876737",
+				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541177599701876737"
+			},
+			"creationTimestamp": null,
+			"deletionTimestamp": null
+		},
+		"subnetv4_id": "",
+		"option-data": null,
+		"begin-address": "10.0.7.31",
+		"end-address": "10.0.7.33"
+	}, {
+		"embedded": {
+			"id": "541180482764046337",
+			"type": "restpool",
+			"links": {
+				"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools",
+				"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541180482764046337",
+				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541180482764046337",
+				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541180482764046337"
+			},
+			"creationTimestamp": null,
+			"deletionTimestamp": null
+		},
+		"subnetv4_id": "",
+		"option-data": null,
+		"begin-address": "10.0.7.31",
+		"end-address": "10.0.7.33"
+	}, {
+		"embedded": {
+			"id": "541180985772277761",
+			"type": "restpool",
+			"links": {
+				"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools",
+				"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541180985772277761",
+				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541180985772277761",
+				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541180985772277761"
+			},
+			"creationTimestamp": null,
+			"deletionTimestamp": null
+		},
+		"subnetv4_id": "",
+		"option-data": null,
+		"begin-address": "10.0.7.35",
+		"end-address": "10.0.7.43"
+	}, {
+		"embedded": {
+			"id": "541181152339394561",
+			"type": "restpool",
+			"links": {
+				"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools",
+				"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181152339394561",
+				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181152339394561",
+				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181152339394561"
+			},
+			"creationTimestamp": null,
+			"deletionTimestamp": null
+		},
+		"subnetv4_id": "",
+		"option-data": null,
+		"begin-address": "10.0.7.51",
+		"end-address": "10.0.7.53"
+	}, {
+		"embedded": {
+			"id": "541181942501539841",
+			"type": "restpool",
+			"links": {
+				"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools",
+				"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181942501539841",
+				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181942501539841",
+				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541177423683059713/restpools/541181942501539841"
+			},
+			"creationTimestamp": null,
+			"deletionTimestamp": null
+		},
+		"subnetv4_id": "",
+		"option-data": null,
+		"begin-address": "10.0.7.61",
+		"end-address": "10.0.7.63"
+	}]
+}
+
+
+
+#### 4.3 修改ipv4 pool
+
+
+
+#### 4.4 删除 ipv4 pool
+

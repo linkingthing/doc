@@ -463,7 +463,7 @@
 | 请求方式 | GET                                                          |
 | 请求参数 | begin-address, string, 地址池开始地址                        |
 |          |                                                              |
-| 请求示例 | curl http://10.0.0.55:1235/apis/linkingthing/dhcp/v1/restsubnetv4s/540777754924679169/restpools -X GET |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X GET |
 
 - 返回数据示例
 
@@ -567,5 +567,60 @@
 
 
 
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 修改子网下的一个地址池                                       |
+| 接口地址 | /apis/linkingthing.com/example/v1/subnetv4s/:subnetv4Id/restpools/:poolId |
+| 请求方式 | PUT                                                          |
+| 请求参数 | begin-address, string, 地址池开始地址                        |
+|          | end-address, string, 地址池结束地址                          |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541703561156001793 -X PUT -d '{"begin-address": "10.0.6.20","end-address": "10.0.6.27"}' |
+
+- 返回数据示例
+
+  {
+  	"embedded": {
+  		"id": "541181942501539841",
+  		"type": "restpool",
+  		"links": {
+  			"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540777754924679169/restpools",
+  			"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540777754924679169/restpools/541181942501539841",
+  			"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540777754924679169/restpools/541181942501539841",
+  			"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540777754924679169/restpools/541181942501539841"
+  		},
+  		"creationTimestamp": null,
+  		"deletionTimestamp": null
+  	},
+  	"subnetv4_id": "11",
+  	"option-data": null,
+  	"begin-address": "10.0.7.61",
+  	"end-address": "10.0.7.66"
+  }
+
+  
+
 #### 4.4 删除 ipv4 pool
+
+
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 删除子网下的一个地址池                                       |
+| 接口地址 | /apis/linkingthing.com/example/v1/subnetv4s/:subnetv4Id/restpools/:poolId |
+| 请求方式 | DELETE                                                       |
+| 请求参数 | 无                                                           |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541709948222537729  -X DELETE |
+
+- 返回数据示例
+
+  正常没有返回
+
+  如果出错，返回：
+
+  {"code":"ServerError","status":500,"type":"error","message":"unknown subnetv4pool with ID 541059362827632641, record not found"}
+
+
+
+
 

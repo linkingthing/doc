@@ -37,7 +37,7 @@
 			"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541122915319513089",
 			"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541122915319513089"
 		},
-		"creationTimestamp": "2020-03-26T07:33:28Z",
+		"creationTimestamp": "2020-03-26T07:33:28Z",//创建时间
 		"deletionTimestamp": null
 	},
 	"name": "name35", //子网名称
@@ -46,8 +46,8 @@
 	"validLifetime": "35", //有效生命时长
 	"Reservations": null,
 	"Pools": null,
-	"SubnetTotal": "",
-	"usage": ""
+	"total": "",//地址数量
+	"usage": ""//子网地址使用率
 }
 
 

@@ -234,7 +234,7 @@
 ### 2规划地址展示
 - 接口信息  
 
-|接口描述|获取视图信息|
+|接口描述|获取规划地址信息|
 |-|-|
 |请求地址|/apis/linkingthing.com/example/v1/dividedaddresses/:dividedaddress_id
 |请求方式|HTTP/1.1 GET|
@@ -370,7 +370,7 @@
 
 - 接口信息  
 
-|接口描述|获取视图信息|
+|接口描述|获取扫描地址信息|
 |-|-|
 |请求地址|/apis/linkingthing.com/example/v1/scanaddresses/:scanaddress_id
 |请求方式|HTTP/1.1 GET|

@@ -184,6 +184,53 @@
 
 
 
+#### 1.5 拆分ipv4子网
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 拆分ipv4子网                                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id?action=mergesplit |
+| 请求方式 | POST                                                         |
+| 请求参数 | oper, string, ="split"; mask, string, 掩码长度               |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089?action=mergesplit -X POST -d '{"oper":"split","mask":"29"}' |
+|          |                                                              |
+
+- 返回数据示例
+
+字段和新建ipv4子网的一致
+
+{
+	"embedded": {
+		"id": "542483914175676417",
+		"creationTimestamp": "2020-03-31T02:55:52Z",//创建时间
+		"deletionTimestamp": null
+	},
+	"name": "192.168.1.240/29",//name原型没有输入，暂时和subnet一致
+	"subnet": "192.168.1.240/29",//新的子网
+	"subnet_id": "542483914175676417",
+	"validLifetime": "0",
+	"Reservations": null,
+	"Pools": null,
+	"total": "",
+	"usage": ""
+}, {
+	"embedded": {
+		"id": "542483917507723265",
+		"creationTimestamp": "2020-03-31T02:55:53Z",
+		"deletionTimestamp": null
+	},
+	"name": "192.168.1.248/29",
+	"subnet": "192.168.1.248/29",
+	"subnet_id": "542483917507723265",
+	"validLifetime": "0",
+	"Reservations": null,
+	"Pools": null,
+	"total": "",
+	"usage": ""
+}
+
+
+
 ### 2规划地址展示
 - 接口信息  
 

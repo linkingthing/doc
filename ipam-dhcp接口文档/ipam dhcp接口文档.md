@@ -16,7 +16,7 @@
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 获取top域名和top ip                                          |
-| 接口地址 | /apis/linkingthing.com/example/v1/subnetv4s                  |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s              |
 | 请求方式 | POST                                                         |
 | 请求参数 | subnet, string, 子网地址                                     |
 |          | name, 类型 string,子网地址                                   |

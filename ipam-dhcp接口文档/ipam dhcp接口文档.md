@@ -255,7 +255,7 @@
 ### 2规划地址展示
 - 接口信息  
 
-|接口描述|获取视图信息|
+|接口描述|获取规划地址信息|
 |-|-|
 |请求地址|/apis/linkingthing.com/example/v1/dividedaddresses/:dividedaddress_id
 |请求方式|HTTP/1.1 GET|
@@ -379,18 +379,19 @@
 }
 ```
 
-界面元素|响应参数位置|参数类型|参数值举例|
-- | -|-|-|
-保留地址|reserved|string|"172.16.86.206"|
-动态地址|dynamic|string|"172.16.86.3"|
-固定地址|stable|string|"172.16.86.1"|
-手动地址|manual|string|"172.16.86.210"|
-已分配地址|lease|string|"172.16.86.103"|
+|界面元素|响应参数位置|参数类型|参数值举例|
+|- | -|-|-|
+|保留地址|reserved|string|"172.16.86.206"|
+|动态地址|dynamic|string|"172.16.86.3"|
+|固定地址|stable|string|"172.16.86.1"|
+|手动地址|manual|string|"172.16.86.210"|
+|已分配地址|lease|string|"172.16.86.103"|
+|未使用地址|unused|string|"172.16.86.203"|
 ### 3地址扫描
 
 - 接口信息  
 
-|接口描述|获取视图信息|
+|接口描述|获取扫描地址信息|
 |-|-|
 |请求地址|/apis/linkingthing.com/example/v1/scanaddresses/:scanaddress_id
 |请求方式|HTTP/1.1 GET|
@@ -474,10 +475,10 @@
 }
 ```
 
-界面元素|响应参数位置|参数类型|参数值举例|
-- | -|-|-|
-冲突地址|collision|string|"172.16.86.254"|
-僵尸地址|dead|string|"172.16.86.102"|
+|界面元素|响应参数位置|参数类型|参数值举例|
+|- | -|-|-|
+|冲突地址|collision|string|"172.16.86.254"|
+|僵尸地址|dead|string|"172.16.86.102"|
 
 
 

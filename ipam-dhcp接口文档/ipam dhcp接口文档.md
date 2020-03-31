@@ -186,6 +186,8 @@
 
 #### 1.5 拆分ipv4子网
 
+
+
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 拆分ipv4子网                                                 |
@@ -228,6 +230,25 @@
 	"total": "",
 	"usage": ""
 }
+
+
+
+#### 1.6 合并ipv4子网
+
+
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 合并ipv4子网                                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id?action=mergesplit |
+| 请求方式 | POST                                                         |
+| 请求参数 | oper, string, ="split"; mask, string, 掩码长度               |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089?action=mergesplit -X POST -d '{"oper":"merge","ips":"193.168.1.1/29\n193.168.1.66/26"}' |
+|          |                                                              |
+
+- 返回数据示例
+
+{"code":"ServerError","status":500,"type":"error","message":"错误, 无法合并子网"}
 
 
 

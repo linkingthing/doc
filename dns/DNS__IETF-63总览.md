@@ -18,7 +18,7 @@
 
 ## DNS树
 
-![DNS树](pictures\DNStree.png)
+![DNS树](pictures/DNStree.png)
 
 ## DNS词汇
 
@@ -110,13 +110,13 @@
 - QCLASS: IN
 - QTYPE: A
 
-![](pictures\query1.png)
+![](pictures/query1.png)
 
 ## DNS 查询模式
 
 - **查询 -> 应答 **
 
-![](pictures\query-answer.jpg)
+![](pictures/query-answer.jpg)
 
 桩(stub)解析服务器 如果有答案就应答之前的应用. 
 
@@ -248,7 +248,7 @@
   - 目前正在讨论的:分开的注册
   - 这对本地服务的定位不太好 (-> 爬取树)
 
-![](D:\lianxing\workspace\培训\pictures\srv1.png)
+![](pictures/srv1.png)
 
 ## 什么时候使用SRV
 

@@ -242,13 +242,49 @@
 | 接口功能 | 合并ipv4子网。传入几个子网id，如果不能合并服务器会提示错误。如果能合并，将删除这几个子网，创建一个新的子网 |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s?action=mergesplit |
 | 请求方式 | POST                                                         |
-| 请求参数 | oper, string, ="split"; mask, string, 掩码长度               |
+| 请求参数 | oper, string, ="split" 操作,都是split                        |
 |          | ips, string, 逗号分隔的子网id                                |
 |          | 示例："ips":"542475213327138817,542475209988800513"          |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089?action=mergesplit -X POST -d '{"oper":"merge","mask":"29","ips":"542475213327138817,542475209988800513"}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s?action=mergesplit -X POST -d '{"oper":"merge","ips":"542475213327138817,542475209988800513"}' |
 |          |                                                              |
 
 - 返回数据示例
+
+  - 正确返回创建后的子网详情
+
+    {
+
+    "embedded": {
+
+  ​    "id": "542875861930442753",
+
+  ​    "creationTimestamp": "2020-04-01T12:09:25Z",
+
+  ​    "deletionTimestamp": null
+
+    },
+
+    "name": "10.0.6.0/24",
+
+    "subnet": "10.0.6.0/24",
+
+    "subnet_id": "542875861930442753",
+
+    "validLifetime": "0",
+
+    "Reservations": null,
+
+    "Pools": null,
+
+    "total": "",
+
+    "usage": ""
+
+  }
+
+  
+
+  - 如果不能合并，返回错误信息
 
 {"code":"ServerError","status":500,"type":"error","message":"错误, 无法合并子网"}
 

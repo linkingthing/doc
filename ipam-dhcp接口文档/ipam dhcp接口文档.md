@@ -647,8 +647,8 @@
 | 请求方式 | PUT                                                          |
 | 请求参数 | begin-address, string, 地址池开始地址                        |
 |          | end-address, string, 地址池结束地址                          |
-|          | valid-lifetime, string, 默认租赁时间                         |
-|          | max-valid-lifetime, string, 最大租赁时间                     |
+|          | valid-lifetime, int, 默认租赁时间                            |
+|          | max-valid-lifetime, int, 最大租赁时间                        |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541703561156001793 -X PUT -d '{"begin-address": "10.0.6.20","end-address": "10.0.6.27","valid-lifetime":2325,"max-valid-lifetime":232325}' |
 
 - 返回数据示例

@@ -686,5 +686,257 @@
 
 
 
+### 5 Option管理
+
+#### 5.1 添加option
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 添加option                                                   |
+| 接口地址 | /apis/linkingthing.com/example/v1/restoptionnames            |
+| 请求方式 | POST                                                         |
+| 请求参数 | optionVer, string, option的版本 "v4"或"v6"                   |
+|          | optionId, int, option序号                                    |
+|          | optionName, string, option名称                               |
+|          | optionType, string, option类型                               |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restoptionnames -X POST -d '{"optionVer":"v6","optionId":3,"optionName":"name03","optionType":"integer"}' |
+
+- 返回数据示例
+
+{
+
+  "embedded": {
+
+​    "id": "543347579624587265", //id
+
+​    "type": "restoptionname",
+
+​    "links": {
+
+​      "collection": "/apis/linkingthing.com/example/v1/restoptionnames",
+
+​      "remove": "/apis/linkingthing.com/example/v1/restoptionnames/543347579624587265",
+
+​      "update": "/apis/linkingthing.com/example/v1/restoptionnames/543347579624587265"
+
+​    },
+
+​    "creationTimestamp": "2020-04-03T12:08:42+08:00",
+
+​    "deletionTimestamp": null
+
+  },
+
+  "optionVer": "v6", //与请求参数相同
+
+  "optionId": 3,//与请求参数相同
+
+  "optionName": "name03",//与请求参数相同
+
+  "optionType": "integer"//与请求参数相同
+
+}
 
 
+
+#### 5.2 option配置页面 (统计信息)
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | option配置                                                   |
+| 接口地址 | /apis/linkingthing.com/example/v1/restoptionnames?action=list |
+| 请求方式 | POST                                                         |
+| 请求参数 | action, string, 只有一个值 "list"                            |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restoptionnames -X POST -d '{"oper":"list"}' |
+
+- 返回数据示例
+
+{
+	"status": "200",//默认成功，是200
+	"message": "ok",//暂时无用
+	"data": [{
+		"optionNotes": "",//备注
+		"optionNum": 5,//数量
+		"optionName": "DHCP",//名称
+		"optionType": "IPv4"//类型
+	}, {
+		"optionNotes": "",
+		"optionNum": 5,
+		"optionName": "DHCP",
+		"optionType": "IPv4"
+	}]
+}
+
+
+
+#### 5.3 option列表
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | option列表                                                   |
+| 接口地址 | /apis/linkingthing.com/example/v1/restoptionnames            |
+| 请求方式 | GET                                                          |
+| 请求参数 | 无                                                           |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restoptionnames -X GET |
+
+- 返回数据示例
+
+{
+
+  "type": "collection",
+
+  "resourceType": "restoptionname",
+
+  "links": {
+
+​    "self": "/apis/linkingthing.com/example/v1/restoptionnames"
+
+  },
+
+  "data": [
+
+​    {
+
+​      "embedded": {
+
+​        "id": "543347579624587265",
+
+​        "type": "restoptionname",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restoptionnames",
+
+​          "remove": "/apis/linkingthing.com/example/v1/restoptionnames/543347579624587265",
+
+​          "update": "/apis/linkingthing.com/example/v1/restoptionnames/543347579624587265"
+
+​        },
+
+​        "creationTimestamp": "2020-04-03T04:08:42Z",
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "optionVer": "v6",
+
+​      "optionId": 3,
+
+​      "optionName": "name03",
+
+​      "optionType": "integer"
+
+​    },
+
+​    {
+
+​      "embedded": {
+
+​        "id": "543351159456595969",
+
+​        "type": "restoptionname",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restoptionnames",
+
+​          "remove": "/apis/linkingthing.com/example/v1/restoptionnames/543351159456595969",
+
+​          "update": "/apis/linkingthing.com/example/v1/restoptionnames/543351159456595969"
+
+​        },
+
+​        "creationTimestamp": "2020-04-03T04:26:54Z",
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "optionVer": "v4",//与5.1请求参数相同
+
+​      "optionId": 2,//与5.1请求参数相同
+
+​      "optionName": "name02",//与5.1请求参数相同
+
+​      "optionType": "integer"//与5.1请求参数相同
+
+​    }
+
+  ]
+
+}
+
+
+
+#### 5.4 option编辑
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | option编辑                                                   |
+| 接口地址 | /apis/linkingthing.com/example/v1/restoptionnames/:id        |
+| 请求方式 | PUT                                                          |
+| 请求参数 | optionVer, string, option的版本 "v4"或"v6"                   |
+|          | optionId, int, option序号                                    |
+|          | optionName, string, option名称                               |
+|          | optionType, string, option类型                               |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restoptionnames/543135023926870017 -X PUT -d '{"optionVer":"v6","optionId":4,"optionName":"name04","optionType":"integer"}' |
+
+- 返回数据示例
+
+{
+
+  "embedded": {
+
+​    "id": "543351159456595969",
+
+​    "type": "restoptionname",
+
+​    "links": {
+
+​      "collection": "/apis/linkingthing.com/example/v1/restoptionnames",
+
+​      "remove": "/apis/linkingthing.com/example/v1/restoptionnames/543351159456595969",
+
+​      "update": "/apis/linkingthing.com/example/v1/restoptionnames/543351159456595969"
+
+​    },
+
+​    "creationTimestamp": null,
+
+​    "deletionTimestamp": null
+
+  },
+
+  "optionVer": "v4",
+
+  "optionId": 1,
+
+  "optionName": "name01",
+
+  "optionType": "integer"
+
+}
+
+
+
+#### 5.5 option删除
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | option删除                                                   |
+| 接口地址 | /apis/linkingthing.com/example/v1/restoptionnames/:id        |
+| 请求方式 | DELETE                                                       |
+| 请求参数 | 无                                                           |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restoptionnames/543135023926870017 -X DELETE |
+
+- 返回数据示例
+
+成功没有任何返回
+
+失败返回各种错误
+
+{"code":"ServerError","status":500,"type":"error","message":"unknown OptionName with ID 543135023926870017, record not found"}

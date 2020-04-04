@@ -940,3 +940,281 @@
 失败返回各种错误
 
 {"code":"ServerError","status":500,"type":"error","message":"unknown OptionName with ID 543135023926870017, record not found"}
+
+### 6地址规划
+#### 6.1 前缀地址校验
+
+- 接口信息
+
+|接口描述|前缀地址校验|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/checkipv6prefix
+|请求方式|HTTP/1.1 POST|
+|请求报文体|JSON|
+|返回格式|JSON|
+
+- 请求参数意义
+请求报文体如下
+```
+{"prefix":"240e:1122::/30"}
+```
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|prefix|是|string|ipv6前缀字符串|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/checkipv6prefix|
+|请求报文体内容|{"prefix":"240e:1122::/30"}|
+|-|-|
+|响应内容|如下引用|
+
+```
+{"prefix":"240e:1120::/30"}
+```
+
+|元素|响应参数位置|参数类型|参数值举例|
+|- | -|-|-|
+|纠正后的ipv6前缀字符串|{"prefix":"240e:1120::/30"}|string|"240e:1120::/30"|
+
+#### 6.2 新增子节点
+- 接口信息
+
+|接口描述|新增子节点|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/createsubtree
+|请求方式|HTTP/1.1 POST|
+|请求报文体|JSON|
+|返回格式|JSON|
+
+- 请求参数意义
+请求报文体如下
+```
+{
+	"parentipv6": "240e:1122::",
+	"parentprefixlength": 35,
+	"bitsusedfor":"zone",
+	"bitnum": 3,
+	"depth": 1,
+	"nodes": [{
+		"nodecode": 0,
+		"NodeName": "test1"
+	}, {
+		"nodecode": 1,
+		"NodeName": "test2"
+	}, {
+		"nodecode": 2,
+		"NodeName": "test3"
+	}]
+}
+```
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|parentipv6|是|string|父节点ipv6前缀字符串|
+|parentprefixlength|是|int|父节点掩码长度|
+|bitsusedfor|是|string|新开子树节点意义|
+|bitnum|是|int|申请使用的bit位数|
+|depth|是|int|新开子树节点深度(头节点深度为0)|
+|nodes|是|nodes|子节点数组|
+|nodecode|是|string|子节点编码值|
+|NodeName|是|string|子节点名称|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/createsubtree|
+|请求报文体内容|如下|
+```
+{
+	"parentipv6": "240e:1122::",
+	"parentprefixlength": 35,
+	"bitsusedfor":"zone",
+	"bitnum": 3,
+	"depth": 1,
+	"nodes": [{
+		"nodecode": 0,
+		"NodeName": "test1"
+	}, {
+		"nodecode": 1,
+		"NodeName": "test2"
+	}, {
+		"nodecode": 2,
+		"NodeName": "test3"
+	}]
+}
+```
+|-|-|
+|响应内容|如下引用|
+
+```
+{
+	"parentid": "543687537509335041",
+	"parentipv6": "240e:1122::",
+	"parentprefixlength": 35,
+	"bitsusedfor": "zone",
+	"bitnum": 3,
+	"depth": 1,
+	"nodes": [{
+		"id": "543687537517756417",
+		"nodecode": 0,
+		"nodename": "test1",
+		"subnet": "240e:1122::/38"
+	}, {
+		"id": "543687537544298497",
+		"nodecode": 1,
+		"nodename": "test2",
+		"subnet": "240e:1122:800::/38"
+	}, {
+		"id": "543687537563959297",
+		"nodecode": 2,
+		"nodename": "test3",
+		"subnet": "240e:1122:1000::/38"
+	}]
+}
+```
+
+|响应元素|元素意义|响应参数位置|参数类型|参数值举例|
+|- |- | -|-|-|
+|parentid|父节点编码|{"parentid": "543686093389955073"}|string|"543686093389955073"|
+|nodes|子节点编码|{"nodes":[{"id":"543686093397360641"}]}|string|"172.16.86.102"|
+
+#### 6.3删除子树节点
+
+- 接口信息
+
+|接口描述|新增子节点|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/deletesubtree
+|请求方式|HTTP/1.1 DELETE|
+|请求报文体|JSON|
+|返回格式|JSON|
+
+- 请求参数意义
+请求报文体如下
+```
+{
+	"id": "543687537509335041"
+}
+```
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|id|是|string|要删除节点的id|
+
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/deletesubtree|
+|请求报文体内容|如下|
+```
+{"id":"543723971361406977"}
+```
+|-|-|
+|响应内容|无|
+
+#### 6.4 查询子树节点
+
+- 接口信息
+
+|接口描述|新增子节点|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/getsubtree
+|请求方式|HTTP/1.1 DELETE|
+|请求报文体|JSON|
+|返回格式|JSON|
+
+- 请求参数意义
+请求报文体如下
+```
+{"id":"543736063566249985"}
+```
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|id|是|string|要查询节点的id|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/getsubtree|
+|请求报文体内容|{"id":"543723971361406977"}|
+|-|-|
+|响应内容|如下|
+```
+{
+	"nodes": {
+		"id": "543736063566249985",
+		"name": "",
+		"subnet": "240e:1122::/35",
+		"nodecode": 0,
+		"subtreebitnum": 3,
+		"depth": 0,
+		"usedfor": "zone",
+		"nodes": [{
+			"id": "543736063572639745",
+			"name": "test1",
+			"subnet": "240e:1122::/38",
+			"nodecode": 0,
+			"subtreebitnum": 0,
+			"depth": 1,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "543736063588663297",
+			"name": "test2",
+			"subnet": "240e:1122:800::/38",
+			"nodecode": 1,
+			"subtreebitnum": 0,
+			"depth": 1,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "543736063610159105",
+			"name": "test3",
+			"subnet": "240e:1122:1000::/38",
+			"nodecode": 2,
+			"subtreebitnum": 3,
+			"depth": 1,
+			"usedfor": "busi",
+			"nodes": [{
+				"id": "543736264120500225",
+				"name": "busi1",
+				"subnet": "240e:1122:1000::/41",
+				"nodecode": 0,
+				"subtreebitnum": 0,
+				"depth": 2,
+				"usedfor": "",
+				"nodes": null
+			}, {
+				"id": "543736264136228865",
+				"name": "busi2",
+				"subnet": "240e:1122:1001::/41",
+				"nodecode": 1,
+				"subtreebitnum": 0,
+				"depth": 2,
+				"usedfor": "",
+				"nodes": null
+			}, {
+				"id": "543736264146419713",
+				"name": "busi3",
+				"subnet": "240e:1122:1002::/41",
+				"nodecode": 2,
+				"subtreebitnum": 0,
+				"depth": 2,
+				"usedfor": "",
+				"nodes": null
+			}]
+		}]
+	}
+}
+```
+|响应元素|元素意义|响应参数位置|参数类型|参数值举例|
+|- |- | -|-|-|
+|nodes|节点树|{"nodes": [{}]}||
+|id|节点ID|{"id":[{"id": "543736063566249985"}]}|string|"543736063566249985"|
+|name|节点名称|{"name": "busi3"]}|string|"busi3"|
+|subnet|子网|{"subnet": "240e:1122:1002::/41"]}|string|"240e:1122:1002::/41"|
+|nodecode|节点值编码|{"id":[{"id": "543736063566249985"}]}|string|"543736063566249985"|
+|subtreebitnum|下一级节点位个数|{"subtreebitnum": 0}|string|"0"|
+|depth|当前节点深度|{"depth": 2}|string|2|
+|usedfor|下一级节点的意义|{"usedfor": "busi"}|string|"busi"|

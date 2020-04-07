@@ -1041,33 +1041,69 @@
 请求报文体如下
 ```
 {
-	"parentipv6": "240e:1122::",
-	"parentprefixlength": 35,
-	"bitsusedfor":"zone",
-	"bitnum": 3,
-	"depth": 1,
+	"name": "all",
+	"subnet": "240e:1122::/32",
+	"nodecode": 0,
+
+	"depth": 0,
+	"usedfor": "zone",
 	"nodes": [{
+		"name": "test1",
 		"nodecode": 0,
-		"NodeName": "test1"
+		"subtreebitnum": 3,
+		"usedfor": "business1",
+		"nodes": [{
+			"name": "test11",
+			"nodecode": 0
+		}, {
+			"name": "test12",
+			"nodecode": 1
+		}, {
+			"name": "test13",
+			"nodecode": 2
+		}]
 	}, {
+		"name": "test2",
 		"nodecode": 1,
-		"NodeName": "test2"
+
+		"usedfor": "business2",
+		"nodes": [{
+			"name": "test21",
+			"nodecode": 0
+		}, {
+			"name": "test22",
+			"nodecode": 1
+		}, {
+			"name": "test23",
+			"nodecode": 2
+		}]
 	}, {
+		"name": "test3",
 		"nodecode": 2,
-		"NodeName": "test3"
+
+		"usedfor": "business3",
+		"nodes": [{
+			"name": "test31",
+			"nodecode": 0
+		}, {
+			"name": "test32",
+			"nodecode": 1
+		}, {
+			"name": "test33",
+			"nodecode": 2
+		}]
 	}]
 }
 ```
 
 |参数名称|是否必填|数据类型|备注|
 | - |-|-|-|
-|parentipv6|是|string|父节点ipv6前缀字符串|
-|parentprefixlength|是|int|父节点掩码长度|
-|bitsusedfor|是|string|新开子树节点意义|
-|bitnum|是|int|申请使用的bit位数|
+|subnet|是|string|当前节点ipv6子网|
+|usedfor|是|string|新开子树节点意义|
+|subtreebitnum|是|int|申请使用的bit位数,可有可无,没有的时候表示系统自动生成该值,有值则校验合法后会使用该值,不合法会使用系统自动生成.|
 |depth|是|int|新开子树节点深度(头节点深度为0)|
 |nodes|是|nodes|子节点数组|
-|nodecode|是|string|子节点编码值|
+|nodecode|是|string|子节点编码值,可以为不连续的值.|
 |NodeName|是|string|子节点名称|
 
 - 请求示例
@@ -1076,20 +1112,57 @@
 |请求报文体内容|如下|
 ```
 {
-	"parentipv6": "240e:1122::",
-	"parentprefixlength": 35,
-	"bitsusedfor":"zone",
-	"bitnum": 3,
-	"depth": 1,
+	"name": "all",
+	"subnet": "240e:1122::/32",
+	"nodecode": 0,
+
+	"depth": 0,
+	"usedfor": "zone",
 	"nodes": [{
+		"name": "test1",
 		"nodecode": 0,
-		"NodeName": "test1"
+		"subtreebitnum": 3,
+		"usedfor": "business1",
+		"nodes": [{
+			"name": "test11",
+			"nodecode": 0
+		}, {
+			"name": "test12",
+			"nodecode": 1
+		}, {
+			"name": "test13",
+			"nodecode": 2
+		}]
 	}, {
+		"name": "test2",
 		"nodecode": 1,
-		"NodeName": "test2"
+
+		"usedfor": "business2",
+		"nodes": [{
+			"name": "test21",
+			"nodecode": 0
+		}, {
+			"name": "test22",
+			"nodecode": 1
+		}, {
+			"name": "test23",
+			"nodecode": 2
+		}]
 	}, {
+		"name": "test3",
 		"nodecode": 2,
-		"NodeName": "test3"
+
+		"usedfor": "business3",
+		"nodes": [{
+			"name": "test31",
+			"nodecode": 0
+		}, {
+			"name": "test32",
+			"nodecode": 1
+		}, {
+			"name": "test33",
+			"nodecode": 2
+		}]
 	}]
 }
 ```
@@ -1098,27 +1171,121 @@
 
 ```
 {
-	"parentid": "543687537509335041",
-	"parentipv6": "240e:1122::",
-	"parentprefixlength": 35,
-	"bitsusedfor": "zone",
-	"bitnum": 3,
-	"depth": 1,
+	"id": "544045009172070401",
+	"name": "all",
+	"subnet": "240e:1122::/32",
+	"nodecode": 0,
+	"subtreebitnum": 4,
+	"depth": 0,
+	"usedfor": "zone",
 	"nodes": [{
-		"id": "543687537517756417",
+		"id": "544045009197826049",
+		"name": "test1",
+		"subnet": "240e:1122::/36",
 		"nodecode": 0,
-		"nodename": "test1",
-		"subnet": "240e:1122::/38"
+		"subtreebitnum": 4,
+		"depth": 1,
+		"usedfor": "business1",
+		"nodes": [{
+			"id": "544045009220960257",
+			"name": "test11",
+			"subnet": "240e:1122::/40",
+			"nodecode": 0,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045009226498049",
+			"name": "test12",
+			"subnet": "240e:1122:2::/40",
+			"nodecode": 1,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045009232789505",
+			"name": "test13",
+			"subnet": "240e:1122:4::/40",
+			"nodecode": 2,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}]
 	}, {
-		"id": "543687537544298497",
+		"id": "544045009238622209",
+		"name": "test2",
+		"subnet": "240e:1122:2000::/36",
 		"nodecode": 1,
-		"nodename": "test2",
-		"subnet": "240e:1122:800::/38"
+		"subtreebitnum": 4,
+		"depth": 1,
+		"usedfor": "business2",
+		"nodes": [{
+			"id": "544045009259724801",
+			"name": "test21",
+			"subnet": "240e:1122:2000::/40",
+			"nodecode": 0,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045009265164289",
+			"name": "test22",
+			"subnet": "240e:1122:2002::/40",
+			"nodecode": 1,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045009270800385",
+			"name": "test23",
+			"subnet": "240e:1122:2004::/40",
+			"nodecode": 2,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}]
 	}, {
-		"id": "543687537563959297",
+		"id": "544045009276305409",
+		"name": "test3",
+		"subnet": "240e:1122:4000::/36",
 		"nodecode": 2,
-		"nodename": "test3",
-		"subnet": "240e:1122:1000::/38"
+		"subtreebitnum": 4,
+		"depth": 1,
+		"usedfor": "business3",
+		"nodes": [{
+			"id": "544045009297997825",
+			"name": "test31",
+			"subnet": "240e:1122:4000::/40",
+			"nodecode": 0,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045009303633921",
+			"name": "test32",
+			"subnet": "240e:1122:4002::/40",
+			"nodecode": 1,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045009308745729",
+			"name": "test33",
+			"subnet": "240e:1122:4004::/40",
+			"nodecode": 2,
+			"subtreebitnum": 1,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}]
 	}]
 }
 ```
@@ -1168,16 +1335,10 @@
 
 |接口描述|新增子节点|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/getsubtree
-|请求方式|HTTP/1.1 DELETE|
-|请求报文体|JSON|
+|请求地址|/apis/linkingthing.com/example/v1/getsubtree?id=543736063566249985
+|请求方式|HTTP/1.1 GET|
+|请求报文体|无|
 |返回格式|JSON|
-
-- 请求参数意义
-请求报文体如下
-```
-{"id":"543736063566249985"}
-```
 
 |参数名称|是否必填|数据类型|备注|
 | - |-|-|-|
@@ -1185,82 +1346,259 @@
 
 - 请求示例
 
-|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/getsubtree|
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/getsubtree?id=543736063566249985|
 |请求报文体内容|{"id":"543723971361406977"}|
 |-|-|
 |响应内容|如下|
 ```
 {
-	"nodes": {
-		"id": "543736063566249985",
-		"name": "",
-		"subnet": "240e:1122::/35",
+	"id": "543990284628230145",
+	"name": "test3",
+	"subnet": "240e:1122:8000::/35",
+	"nodecode": 2,
+	"subtreebitnum": 3,
+	"depth": 1,
+	"usedfor": "business3",
+	"nodes": [{
+		"id": "543990284650020865",
+		"name": "test31",
+		"subnet": "240e:1122:8000::/38",
 		"nodecode": 0,
-		"subtreebitnum": 3,
-		"depth": 0,
-		"usedfor": "zone",
-		"nodes": [{
-			"id": "543736063572639745",
-			"name": "test1",
-			"subnet": "240e:1122::/38",
-			"nodecode": 0,
-			"subtreebitnum": 0,
-			"depth": 1,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "543736063588663297",
-			"name": "test2",
-			"subnet": "240e:1122:800::/38",
-			"nodecode": 1,
-			"subtreebitnum": 0,
-			"depth": 1,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "543736063610159105",
-			"name": "test3",
-			"subnet": "240e:1122:1000::/38",
-			"nodecode": 2,
-			"subtreebitnum": 3,
-			"depth": 1,
-			"usedfor": "busi",
-			"nodes": [{
-				"id": "543736264120500225",
-				"name": "busi1",
-				"subnet": "240e:1122:1000::/41",
-				"nodecode": 0,
-				"subtreebitnum": 0,
-				"depth": 2,
-				"usedfor": "",
-				"nodes": null
-			}, {
-				"id": "543736264136228865",
-				"name": "busi2",
-				"subnet": "240e:1122:1001::/41",
-				"nodecode": 1,
-				"subtreebitnum": 0,
-				"depth": 2,
-				"usedfor": "",
-				"nodes": null
-			}, {
-				"id": "543736264146419713",
-				"name": "busi3",
-				"subnet": "240e:1122:1002::/41",
-				"nodecode": 2,
-				"subtreebitnum": 0,
-				"depth": 2,
-				"usedfor": "",
-				"nodes": null
-			}]
-		}]
-	}
+		"subtreebitnum": 0,
+		"depth": 2,
+		"usedfor": "",
+		"nodes": null
+	}, {
+		"id": "543990284655230977",
+		"name": "test32",
+		"subnet": "240e:1122:8800::/38",
+		"nodecode": 1,
+		"subtreebitnum": 0,
+		"depth": 2,
+		"usedfor": "",
+		"nodes": null
+	}, {
+		"id": "543990284660539393",
+		"name": "test33",
+		"subnet": "240e:1122:9000::/38",
+		"nodecode": 2,
+		"subtreebitnum": 0,
+		"depth": 2,
+		"usedfor": "",
+		"nodes": null
+	}]
 }
 ```
 |响应元素|元素意义|响应参数位置|参数类型|参数值举例|
 |- |- | -|-|-|
 |nodes|节点树|{"nodes": [{}]}||
 |id|节点ID|{"id":[{"id": "543736063566249985"}]}|string|"543736063566249985"|
+|name|节点名称|{"name": "busi3"]}|string|"busi3"|
+|subnet|子网|{"subnet": "240e:1122:1002::/41"]}|string|"240e:1122:1002::/41"|
+|nodecode|节点值编码|{"id":[{"id": "543736063566249985"}]}|string|"543736063566249985"|
+|subtreebitnum|下一级节点位个数|{"subtreebitnum": 0}|string|"0"|
+|depth|当前节点深度|{"depth": 2}|string|2|
+|usedfor|下一级节点的意义|{"usedfor": "busi"}|string|"busi"|
+
+#### 6.5 更新子树节点
+
+- 接口信息
+
+|接口描述|新增子节点|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/updatesubtree
+|请求方式|HTTP/1.1 POST|
+|请求报文体|无|
+|返回格式|JSON|
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|id|是|string|要查询节点的id|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/updatesubtree|
+|请求报文体内容|如下|
+```
+{
+	"id": "544045009172070401",
+	"name": "all",
+	"subnet": "240e:1122::/32",
+	"nodecode": 0,
+	"depth": 0,
+	"usedfor": "zone",
+	"nodes": [{
+		"name": "test1",
+		"nodecode": 0,
+		"usedfor": "business1",
+		"nodes": [{
+			"name": "test11",
+			"nodecode": 0
+		}, {
+			"name": "test12",
+			"nodecode": 1
+		}, {
+			"name": "test13",
+			"nodecode": 2
+		}]
+	}, {
+		"name": "test2",
+		"nodecode": 1,
+		"usedfor": "business2",
+		"nodes": [{
+			"name": "test21",
+			"nodecode": 0
+		}, {
+			"name": "test22",
+			"nodecode": 1
+		}, {
+			"name": "test23",
+			"nodecode": 2
+		}]
+	}, {
+		"name": "test3",
+		"nodecode": 2,
+		"usedfor": "business3",
+		"nodes": [{
+			"name": "test31",
+			"nodecode": 0
+		}, {
+			"name": "test32",
+			"nodecode": 1
+		}, {
+			"name": "test33",
+			"nodecode": 2
+		}]
+	}]
+}
+```
+
+|-|-|
+|响应内容|如下|
+```
+{
+	"id": "544045504174358529",
+	"name": "all",
+	"subnet": "240e:1122::/32",
+	"nodecode": 0,
+	"subtreebitnum": 3,
+	"depth": 0,
+	"usedfor": "zone",
+	"nodes": [{
+		"id": "544045504191168513",
+		"name": "test1",
+		"subnet": "240e:1122::/35",
+		"nodecode": 0,
+		"subtreebitnum": 3,
+		"depth": 1,
+		"usedfor": "business1",
+		"nodes": [{
+			"id": "544045504209190913",
+			"name": "test11",
+			"subnet": "240e:1122::/38",
+			"nodecode": 0,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045504213450753",
+			"name": "test12",
+			"subnet": "240e:1122:800::/38",
+			"nodecode": 1,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045504217120769",
+			"name": "test13",
+			"subnet": "240e:1122:1000::/38",
+			"nodecode": 2,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}]
+	}, {
+		"id": "544045504221511681",
+		"name": "test2",
+		"subnet": "240e:1122:4000::/35",
+		"nodecode": 1,
+		"subtreebitnum": 3,
+		"depth": 1,
+		"usedfor": "business2",
+		"nodes": [{
+			"id": "544045504236191745",
+			"name": "test21",
+			"subnet": "240e:1122:4000::/38",
+			"nodecode": 0,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045504239960065",
+			"name": "test22",
+			"subnet": "240e:1122:4800::/38",
+			"nodecode": 1,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045504243924993",
+			"name": "test23",
+			"subnet": "240e:1122:5000::/38",
+			"nodecode": 2,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}]
+	}, {
+		"id": "544045504247562241",
+		"name": "test3",
+		"subnet": "240e:1122:8000::/35",
+		"nodecode": 2,
+		"subtreebitnum": 3,
+		"depth": 1,
+		"usedfor": "business3",
+		"nodes": [{
+			"id": "544045504264404993",
+			"name": "test31",
+			"subnet": "240e:1122:8000::/38",
+			"nodecode": 0,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045504268402689",
+			"name": "test32",
+			"subnet": "240e:1122:8800::/38",
+			"nodecode": 1,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}, {
+			"id": "544045504272564225",
+			"name": "test33",
+			"subnet": "240e:1122:9000::/38",
+			"nodecode": 2,
+			"subtreebitnum": 0,
+			"depth": 2,
+			"usedfor": "",
+			"nodes": null
+		}]
+	}]
+}
+```
+|响应元素|元素意义|响应参数位置|参数类型|参数值举例|
+|- |- | -|-|-|
+|nodes|节点树|{"nodes": [{}]}||
+|id|节点ID,更新后全部会改变|{"id":[{"id": "543736063566249985"}]}|string|"543736063566249985"|
 |name|节点名称|{"name": "busi3"]}|string|"busi3"|
 |subnet|子网|{"subnet": "240e:1122:1002::/41"]}|string|"240e:1122:1002::/41"|
 |nodecode|节点值编码|{"id":[{"id": "543736063566249985"}]}|string|"543736063566249985"|

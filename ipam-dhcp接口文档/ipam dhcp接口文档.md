@@ -618,9 +618,27 @@
 | 接口功能 | 列出一个子网下的所有地址池                                   |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id/restpools |
 | 请求方式 | GET                                                          |
-| 请求参数 | begin-address, string, 地址池开始地址                        |
 |          |                                                              |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X GET |
+
+- 请求参数意义
+
+| 参数名称 | 是否必填 | 数据类型 | 备注 |
+| -------- | -------- | -------- | ---- |
+| 无       |          |          |      |
+|          |          |          |      |
+
+- 返回参数意义
+
+| 参数名称          | 是否必填 | 数据类型 | 备注       |
+| ----------------- | -------- | -------- | ---------- |
+| poolName          | s        | 字符串   | IP地址     |
+| total             | 是       | 整数     | 地址总量   |
+| addressType       | 是       | 字符串   | 类型       |
+| creationTimestamp | 是       | 字符串   | 创建时间   |
+| usage             | s        | 浮点数   | DHCP使用率 |
+
+
 
 - 返回数据示例
 
@@ -640,13 +658,17 @@
 				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools/542841629383655425",
 				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools/542841629383655425"
 			},
-			"creationTimestamp": null,
+			"creationTimestamp": "2020-04-01T09:15:18Z",
 			"deletionTimestamp": null
 		},
 		"subnetv4Id": "",
-		"option-data": null,
+		"optionData": null,
 		"beginAddress": "101.10.1.31",
-		"endAddress": "101.10.1.33"
+		"endAddress": "101.10.1.33",
+		"total": 2,
+		"usage": 15.32,
+		"addressType": "resv",
+		"poolName": "101.10.1.31-101.10.1.33"
 	}, {
 		"embedded": {
 			"id": "542842026496000001",
@@ -657,20 +679,19 @@
 				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools/542842026496000001",
 				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools/542842026496000001"
 			},
-			"creationTimestamp": null,
+			"creationTimestamp": "2020-04-01T09:17:19Z",
 			"deletionTimestamp": null
-		},	
-
-​    "subnetv4Id": "",//暂时无用
-​	"optionData": null,//option数组，后期补充
-​	"beginAddress": "101.10.1.41",//开始地址
-​	"endAddress": "101.10.1.43",//结束地址
-​	"maxValidLifetime": 232324,//最大租赁时间
-​	"validLifetime": 2324//默认租赁时间
-​	}]
+		},
+		"subnetv4Id": "",
+		"optionData": null,
+		"beginAddress": "101.10.1.41",
+		"endAddress": "101.10.1.43",
+		"total": 2,
+		"usage": 15.32,
+		"addressType": "resv",
+		"poolName": "101.10.1.41-101.10.1.43"
+	}]
 }
-
-
 
 #### 4.3 修改ipv4 pool
 

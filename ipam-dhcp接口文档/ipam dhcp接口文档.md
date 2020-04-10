@@ -1095,58 +1095,84 @@
 请求报文体如下
 ```
 {
-	"name": "all",
-	"subnet": "240e:1122::/32",
-	"nodecode": 0,
-
-	"depth": 0,
-	"usedfor": "zone",
-	"nodes": [{
-		"name": "test1",
-		"nodecode": 0,
-		"subtreebitnum": 3,
-		"usedfor": "business1",
-		"nodes": [{
-			"name": "test11",
-			"nodecode": 0
-		}, {
-			"name": "test12",
-			"nodecode": 1
-		}, {
-			"name": "test13",
-			"nodecode": 2
-		}]
-	}, {
-		"name": "test2",
-		"nodecode": 1,
-
-		"usedfor": "business2",
-		"nodes": [{
-			"name": "test21",
-			"nodecode": 0
-		}, {
-			"name": "test22",
-			"nodecode": 1
-		}, {
-			"name": "test23",
-			"nodecode": 2
-		}]
-	}, {
-		"name": "test3",
-		"nodecode": 2,
-
-		"usedfor": "business3",
-		"nodes": [{
-			"name": "test31",
-			"nodecode": 0
-		}, {
-			"name": "test32",
-			"nodecode": 1
-		}, {
-			"name": "test33",
-			"nodecode": 2
-		}]
-	}]
+    "name":"all",
+    "beginsubnet":"240e:1122::/32",
+    "endsubnet":"240e:1122::/32",
+    "beginnodecode":0,
+    "endnodecode":0,
+    "depth":0,
+    "usedfor":"zone",
+    "nodes":[
+        {
+            "name":"test1",
+            "beginnodecode":0,
+            "endnodecode":1,
+            "usedfor":"business1",
+            "nodes":[
+                {
+                    "name":"test11",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test12",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test13",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        },
+        {
+            "name":"test2",
+            "beginnodecode":2,
+            "endnodecode":3,
+            "usedfor":"business2",
+            "nodes":[
+                {
+                    "name":"test21",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test22",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test23",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        },
+        {
+            "name":"test3",
+            "beginnodecode":4,
+            "endnodecode":5,
+            "usedfor":"business3",
+            "nodes":[
+                {
+                    "name":"test31",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test32",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test33",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -1166,58 +1192,84 @@
 |请求报文体内容|如下|
 ```
 {
-	"name": "all",
-	"subnet": "240e:1122::/32",
-	"nodecode": 0,
-
-	"depth": 0,
-	"usedfor": "zone",
-	"nodes": [{
-		"name": "test1",
-		"nodecode": 0,
-		"subtreebitnum": 3,
-		"usedfor": "business1",
-		"nodes": [{
-			"name": "test11",
-			"nodecode": 0
-		}, {
-			"name": "test12",
-			"nodecode": 1
-		}, {
-			"name": "test13",
-			"nodecode": 2
-		}]
-	}, {
-		"name": "test2",
-		"nodecode": 1,
-
-		"usedfor": "business2",
-		"nodes": [{
-			"name": "test21",
-			"nodecode": 0
-		}, {
-			"name": "test22",
-			"nodecode": 1
-		}, {
-			"name": "test23",
-			"nodecode": 2
-		}]
-	}, {
-		"name": "test3",
-		"nodecode": 2,
-
-		"usedfor": "business3",
-		"nodes": [{
-			"name": "test31",
-			"nodecode": 0
-		}, {
-			"name": "test32",
-			"nodecode": 1
-		}, {
-			"name": "test33",
-			"nodecode": 2
-		}]
-	}]
+    "name":"all",
+    "beginsubnet":"240e:1122::/32",
+    "endsubnet":"240e:1122::/32",
+    "beginnodecode":0,
+    "endnodecode":0,
+    "depth":0,
+    "usedfor":"zone",
+    "nodes":[
+        {
+            "name":"test1",
+            "beginnodecode":0,
+            "endnodecode":1,
+            "usedfor":"business1",
+            "nodes":[
+                {
+                    "name":"test11",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test12",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test13",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        },
+        {
+            "name":"test2",
+            "beginnodecode":2,
+            "endnodecode":3,
+            "usedfor":"business2",
+            "nodes":[
+                {
+                    "name":"test21",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test22",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test23",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        },
+        {
+            "name":"test3",
+            "beginnodecode":4,
+            "endnodecode":5,
+            "usedfor":"business3",
+            "nodes":[
+                {
+                    "name":"test31",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test32",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test33",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        }
+    ]
 }
 ```
 |-|-|
@@ -1225,117 +1277,143 @@
 
 ```
 {
-	"id": "544045009172070401",
+	"id": "545170931893010433",
 	"name": "all",
-	"subnet": "240e:1122::/32",
-	"nodecode": 0,
-	"subtreebitnum": 4,
+	"beginsubnet": "240e:1122::/32",
+	"endsubnet": "240e:1122::/32",
+	"beginnodecode": 0,
+	"endnodecode": 0,
+	"subtreebitnum": 3,
 	"depth": 0,
 	"usedfor": "zone",
 	"nodes": [{
-		"id": "544045009197826049",
+		"id": "545170931908280321",
 		"name": "test1",
-		"subnet": "240e:1122::/36",
-		"nodecode": 0,
-		"subtreebitnum": 4,
+		"beginsubnet": "240e:1122::/35",
+		"endsubnet": "240e:1122:2000::/35",
+		"beginnodecode": 0,
+		"endnodecode": 1,
+		"subtreebitnum": 3,
 		"depth": 1,
 		"usedfor": "business1",
 		"nodes": [{
-			"id": "544045009220960257",
+			"id": "545170931918962689",
 			"name": "test11",
-			"subnet": "240e:1122::/40",
-			"nodecode": 0,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122::/37",
+			"endsubnet": "240e:1122::/37",
+			"beginnodecode": 0,
+			"endnodecode": 0,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}, {
-			"id": "544045009226498049",
+			"id": "545170931925188609",
 			"name": "test12",
-			"subnet": "240e:1122:2::/40",
-			"nodecode": 1,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:800::/37",
+			"endsubnet": "240e:1122:800::/37",
+			"beginnodecode": 1,
+			"endnodecode": 1,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}, {
-			"id": "544045009232789505",
+			"id": "545170931931250689",
 			"name": "test13",
-			"subnet": "240e:1122:4::/40",
-			"nodecode": 2,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:1000::/37",
+			"endsubnet": "240e:1122:1000::/37",
+			"beginnodecode": 2,
+			"endnodecode": 2,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}]
 	}, {
-		"id": "544045009238622209",
+		"id": "545170931937476609",
 		"name": "test2",
-		"subnet": "240e:1122:2000::/36",
-		"nodecode": 1,
-		"subtreebitnum": 4,
+		"beginsubnet": "240e:1122:4000::/35",
+		"endsubnet": "240e:1122:6000::/35",
+		"beginnodecode": 2,
+		"endnodecode": 3,
+		"subtreebitnum": 3,
 		"depth": 1,
 		"usedfor": "business2",
 		"nodes": [{
-			"id": "544045009259724801",
+			"id": "545170931946684417",
 			"name": "test21",
-			"subnet": "240e:1122:2000::/40",
-			"nodecode": 0,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:4000::/37",
+			"endsubnet": "240e:1122:4000::/37",
+			"beginnodecode": 0,
+			"endnodecode": 0,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}, {
-			"id": "544045009265164289",
+			"id": "545170931951730689",
 			"name": "test22",
-			"subnet": "240e:1122:2002::/40",
-			"nodecode": 1,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:4800::/37",
+			"endsubnet": "240e:1122:4800::/37",
+			"beginnodecode": 1,
+			"endnodecode": 1,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}, {
-			"id": "544045009270800385",
+			"id": "545170931957497857",
 			"name": "test23",
-			"subnet": "240e:1122:2004::/40",
-			"nodecode": 2,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:5000::/37",
+			"endsubnet": "240e:1122:5000::/37",
+			"beginnodecode": 2,
+			"endnodecode": 2,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}]
 	}, {
-		"id": "544045009276305409",
+		"id": "545170931962937345",
 		"name": "test3",
-		"subnet": "240e:1122:4000::/36",
-		"nodecode": 2,
-		"subtreebitnum": 4,
+		"beginsubnet": "240e:1122:8000::/35",
+		"endsubnet": "240e:1122:a000::/35",
+		"beginnodecode": 4,
+		"endnodecode": 5,
+		"subtreebitnum": 3,
 		"depth": 1,
 		"usedfor": "business3",
 		"nodes": [{
-			"id": "544045009297997825",
+			"id": "545170931974078465",
 			"name": "test31",
-			"subnet": "240e:1122:4000::/40",
-			"nodecode": 0,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:8000::/37",
+			"endsubnet": "240e:1122:8000::/37",
+			"beginnodecode": 0,
+			"endnodecode": 0,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}, {
-			"id": "544045009303633921",
+			"id": "545170931980271617",
 			"name": "test32",
-			"subnet": "240e:1122:4002::/40",
-			"nodecode": 1,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:8800::/37",
+			"endsubnet": "240e:1122:8800::/37",
+			"beginnodecode": 1,
+			"endnodecode": 1,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
 		}, {
-			"id": "544045009308745729",
+			"id": "545170931985874945",
 			"name": "test33",
-			"subnet": "240e:1122:4004::/40",
-			"nodecode": 2,
-			"subtreebitnum": 1,
+			"beginsubnet": "240e:1122:9000::/37",
+			"endsubnet": "240e:1122:9000::/37",
+			"beginnodecode": 2,
+			"endnodecode": 2,
+			"subtreebitnum": 0,
 			"depth": 2,
 			"usedfor": "",
 			"nodes": null
@@ -1401,41 +1479,60 @@
 - 请求示例
 
 |请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/getsubtree?id=543736063566249985|
-|请求报文体内容|{"id":"543723971361406977"}|
 |-|-|
 |响应内容|如下|
+
 ```
 {
-	"id": "543990284628230145",
-	"name": "test3",
-	"subnet": "240e:1122:8000::/35",
-	"nodecode": 2,
+	"id": "545298304795344897",
+	"name": "test1",
+	"beginsubnet": "240e:1122::/35",
+	"endsubnet": "240e:1122:2000::/35",
+	"beginnodecode": 0,
+	"endnodecode": 1,
 	"subtreebitnum": 3,
 	"depth": 1,
-	"usedfor": "business3",
+	"usedfor": "business1",
 	"nodes": [{
-		"id": "543990284650020865",
-		"name": "test31",
-		"subnet": "240e:1122:8000::/38",
-		"nodecode": 0,
+		"id": "545298304801603585",
+		"name": "test11",
+		"beginsubnet": "240e:1122::/37",
+		"endsubnet": "240e:1122::/37",
+		"beginnodecode": 0,
+		"endnodecode": 0,
 		"subtreebitnum": 0,
 		"depth": 2,
 		"usedfor": "",
 		"nodes": null
 	}, {
-		"id": "543990284655230977",
-		"name": "test32",
-		"subnet": "240e:1122:8800::/38",
-		"nodecode": 1,
+		"id": "545298304805896193",
+		"name": "test12",
+		"beginsubnet": "240e:1122:800::/37",
+		"endsubnet": "240e:1122:800::/37",
+		"beginnodecode": 1,
+		"endnodecode": 1,
 		"subtreebitnum": 0,
 		"depth": 2,
 		"usedfor": "",
 		"nodes": null
 	}, {
-		"id": "543990284660539393",
-		"name": "test33",
-		"subnet": "240e:1122:9000::/38",
-		"nodecode": 2,
+		"id": "545298304809926657",
+		"name": "test13",
+		"beginsubnet": "240e:1122:1000::/37",
+		"endsubnet": "240e:1122:1000::/37",
+		"beginnodecode": 2,
+		"endnodecode": 2,
+		"subtreebitnum": 0,
+		"depth": 2,
+		"usedfor": "",
+		"nodes": null
+	}, {
+		"id": "545298304814252033",
+		"name": "剩余资源",
+		"beginsubnet": "240e:1122::/37",
+		"endsubnet": "240e:1122::/37",
+		"beginnodecode": 0,
+		"endnodecode": 0,
 		"subtreebitnum": 0,
 		"depth": 2,
 		"usedfor": "",
@@ -1443,6 +1540,7 @@
 	}]
 }
 ```
+
 |响应元素|元素意义|响应参数位置|参数类型|参数值举例|
 |- |- | -|-|-|
 |nodes|节点树|{"nodes": [{}]}||
@@ -1458,7 +1556,7 @@
 
 - 接口信息
 
-|接口描述|新增子节点|
+|接口描述|更新子节点|
 |-|-|
 |请求地址|/apis/linkingthing.com/example/v1/updatesubtree
 |请求方式|HTTP/1.1 POST|
@@ -1467,7 +1565,7 @@
 
 |参数名称|是否必填|数据类型|备注|
 | - |-|-|-|
-|id|是|string|要查询节点的id|
+|id|是|string|要更新节点的id|
 
 - 请求示例
 
@@ -1475,55 +1573,85 @@
 |请求报文体内容|如下|
 ```
 {
-	"id": "544045009172070401",
-	"name": "all",
-	"subnet": "240e:1122::/32",
-	"nodecode": 0,
-	"depth": 0,
-	"usedfor": "zone",
-	"nodes": [{
-		"name": "test1",
-		"nodecode": 0,
-		"usedfor": "business1",
-		"nodes": [{
-			"name": "test11",
-			"nodecode": 0
-		}, {
-			"name": "test12",
-			"nodecode": 1
-		}, {
-			"name": "test13",
-			"nodecode": 2
-		}]
-	}, {
-		"name": "test2",
-		"nodecode": 1,
-		"usedfor": "business2",
-		"nodes": [{
-			"name": "test21",
-			"nodecode": 0
-		}, {
-			"name": "test22",
-			"nodecode": 1
-		}, {
-			"name": "test23",
-			"nodecode": 2
-		}]
-	}, {
-		"name": "test3",
-		"nodecode": 2,
-		"usedfor": "business3",
-		"nodes": [{
-			"name": "test31",
-			"nodecode": 0
-		}, {
-			"name": "test32",
-			"nodecode": 1
-		}, {
-			"name": "test33",
-			"nodecode": 2
-		}]
-	}]
+   "id": "545172711584989185",
+    "name":"all",
+    "beginsubnet":"240e:1122::/32",
+    "endsubnet":"240e:1122::/32",
+    "beginnodecode":0,
+    "endnodecode":0,
+    "depth":0,
+    "usedfor":"zone",
+    "nodes":[
+        {
+            "name":"test1",
+            "beginnodecode":0,
+            "endnodecode":1,
+            "usedfor":"business1",
+            "nodes":[
+                {
+                    "name":"test11",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test12",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test13",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        },
+        {
+            "name":"test2",
+            "beginnodecode":2,
+            "endnodecode":3,
+            "usedfor":"business2",
+            "nodes":[
+                {
+                    "name":"test21",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test22",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test23",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        },
+        {
+            "name":"test3",
+            "beginnodecode":4,
+            "endnodecode":5,
+            "usedfor":"business3",
+            "nodes":[
+                {
+                    "name":"test31",
+                    "beginnodecode":0,
+                    "endnodecode":0
+                },
+                {
+                    "name":"test32",
+                    "beginnodecode":1,
+                    "endnodecode":1
+                },
+                {
+                    "name":"test33",
+                    "beginnodecode":2,
+                    "endnodecode":2
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -1531,122 +1659,164 @@
 |响应内容|如下|
 ```
 {
-	"id": "544045504174358529",
-	"name": "all",
-	"subnet": "240e:1122::/32",
-	"nodecode": 0,
-	"subtreebitnum": 3,
-	"depth": 0,
-	"usedfor": "zone",
-	"nodes": [{
-		"id": "544045504191168513",
-		"name": "test1",
-		"subnet": "240e:1122::/35",
-		"nodecode": 0,
-		"subtreebitnum": 3,
-		"depth": 1,
-		"usedfor": "business1",
-		"nodes": [{
-			"id": "544045504209190913",
-			"name": "test11",
-			"subnet": "240e:1122::/38",
-			"nodecode": 0,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "544045504213450753",
-			"name": "test12",
-			"subnet": "240e:1122:800::/38",
-			"nodecode": 1,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "544045504217120769",
-			"name": "test13",
-			"subnet": "240e:1122:1000::/38",
-			"nodecode": 2,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}]
-	}, {
-		"id": "544045504221511681",
-		"name": "test2",
-		"subnet": "240e:1122:4000::/35",
-		"nodecode": 1,
-		"subtreebitnum": 3,
-		"depth": 1,
-		"usedfor": "business2",
-		"nodes": [{
-			"id": "544045504236191745",
-			"name": "test21",
-			"subnet": "240e:1122:4000::/38",
-			"nodecode": 0,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "544045504239960065",
-			"name": "test22",
-			"subnet": "240e:1122:4800::/38",
-			"nodecode": 1,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "544045504243924993",
-			"name": "test23",
-			"subnet": "240e:1122:5000::/38",
-			"nodecode": 2,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}]
-	}, {
-		"id": "544045504247562241",
-		"name": "test3",
-		"subnet": "240e:1122:8000::/35",
-		"nodecode": 2,
-		"subtreebitnum": 3,
-		"depth": 1,
-		"usedfor": "business3",
-		"nodes": [{
-			"id": "544045504264404993",
-			"name": "test31",
-			"subnet": "240e:1122:8000::/38",
-			"nodecode": 0,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "544045504268402689",
-			"name": "test32",
-			"subnet": "240e:1122:8800::/38",
-			"nodecode": 1,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}, {
-			"id": "544045504272564225",
-			"name": "test33",
-			"subnet": "240e:1122:9000::/38",
-			"nodecode": 2,
-			"subtreebitnum": 0,
-			"depth": 2,
-			"usedfor": "",
-			"nodes": null
-		}]
-	}]
+    "id":"545295223778344961",
+    "name":"all",
+    "beginsubnet":"240e:1122::/32",
+    "endsubnet":"240e:1122::/32",
+    "beginnodecode":0,
+    "endnodecode":0,
+    "subtreebitnum":3,
+    "depth":0,
+    "usedfor":"zone",
+    "nodes":[
+        {
+            "id":"545295223787978753",
+            "name":"test1",
+            "beginsubnet":"240e:1122::/35",
+            "endsubnet":"240e:1122:2000::/35",
+            "beginnodecode":0,
+            "endnodecode":1,
+            "subtreebitnum":3,
+            "depth":1,
+            "usedfor":"business1",
+            "nodes":[
+                {
+                    "id":"545295223795613697",
+                    "name":"test11",
+                    "beginsubnet":"240e:1122::/37",
+                    "endsubnet":"240e:1122::/37",
+                    "beginnodecode":0,
+                    "endnodecode":0,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                },
+                {
+                    "id":"545295223799578625",
+                    "name":"test12",
+                    "beginsubnet":"240e:1122:800::/37",
+                    "endsubnet":"240e:1122:800::/37",
+                    "beginnodecode":1,
+                    "endnodecode":1,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                },
+                {
+                    "id":"545295223805247489",
+                    "name":"test13",
+                    "beginsubnet":"240e:1122:1000::/37",
+                    "endsubnet":"240e:1122:1000::/37",
+                    "beginnodecode":2,
+                    "endnodecode":2,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                }
+            ]
+        },
+        {
+            "id":"545295223809900545",
+            "name":"test2",
+            "beginsubnet":"240e:1122:4000::/35",
+            "endsubnet":"240e:1122:6000::/35",
+            "beginnodecode":2,
+            "endnodecode":3,
+            "subtreebitnum":3,
+            "depth":1,
+            "usedfor":"business2",
+            "nodes":[
+                {
+                    "id":"545295223818420225",
+                    "name":"test21",
+                    "beginsubnet":"240e:1122:4000::/37",
+                    "endsubnet":"240e:1122:4000::/37",
+                    "beginnodecode":0,
+                    "endnodecode":0,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                },
+                {
+                    "id":"545295223822778369",
+                    "name":"test22",
+                    "beginsubnet":"240e:1122:4800::/37",
+                    "endsubnet":"240e:1122:4800::/37",
+                    "beginnodecode":1,
+                    "endnodecode":1,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                },
+                {
+                    "id":"545295223827169281",
+                    "name":"test23",
+                    "beginsubnet":"240e:1122:5000::/37",
+                    "endsubnet":"240e:1122:5000::/37",
+                    "beginnodecode":2,
+                    "endnodecode":2,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                }
+            ]
+        },
+        {
+            "id":"545295223831494657",
+            "name":"test3",
+            "beginsubnet":"240e:1122:8000::/35",
+            "endsubnet":"240e:1122:a000::/35",
+            "beginnodecode":4,
+            "endnodecode":5,
+            "subtreebitnum":3,
+            "depth":1,
+            "usedfor":"business3",
+            "nodes":[
+                {
+                    "id":"545295223840047105",
+                    "name":"test31",
+                    "beginsubnet":"240e:1122:8000::/37",
+                    "endsubnet":"240e:1122:8000::/37",
+                    "beginnodecode":0,
+                    "endnodecode":0,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                },
+                {
+                    "id":"545295223844864001",
+                    "name":"test32",
+                    "beginsubnet":"240e:1122:8800::/37",
+                    "endsubnet":"240e:1122:8800::/37",
+                    "beginnodecode":1,
+                    "endnodecode":1,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                },
+                {
+                    "id":"545295223849091073",
+                    "name":"test33",
+                    "beginsubnet":"240e:1122:9000::/37",
+                    "endsubnet":"240e:1122:9000::/37",
+                    "beginnodecode":2,
+                    "endnodecode":2,
+                    "subtreebitnum":0,
+                    "depth":2,
+                    "usedfor":"",
+                    "nodes":null
+                }
+            ]
+        }
+    ]
 }
 ```
 |响应元素|元素意义|响应参数位置|参数类型|参数值举例|

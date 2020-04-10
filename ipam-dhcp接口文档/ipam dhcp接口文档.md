@@ -441,8 +441,25 @@
 |          | subnetv4Id, string, 本ip地址所属的ipv4子网的id               |
 |          | hwAddress, string, 转固定地址时，如果类型是硬件地址，要加此项 |
 |          |                                                              |
-|          | 示例：保留地址的几种配置情况，每一项可以作为一个固定或保留地址<br />"reservations": [<br/>    {<br/>        "hw-address": "aa:bb:cc:dd:ee:ff",<br/>        "hostname": "hw-host-dynamic" <br/>    },{<br/>        "hw-address": "01:02:03:04:05:06",<br/>        "hostname": "hw-host-fixed",<br/>        "ip-address": "192.0.1.77"<br/>    },{<br/>        "duid":"01:02:03:04:05",<br/>        "hostname": "duid-host" <br/>    },{<br/>        "circuit-id": "'charter950'", <br/>        "hostname": "circuit-id-host"<br/>    },{<br/>        "client-id":"01:11:22:33:44:55:66",<br/>        "hostname": "client-id-host" <br/>    }<br/>] |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "tostable",<br/>    "data": {<br/>        "macaddress": "mac-addersses7",<br/>        "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "544515252269514753",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
+|          | 示例：保留地址的几种配置情况，每一项可以作为一个固定或保留地址<br />"reservations": [<br/>    {<br/>        "hw-address": "aa:bb:cc:dd:ee:ff",<br/>        "hostname": "hw-host-dynamic" <br/>    },{<br/>        "hw-address": "01:02:03:04:05:06",<br/>        "hostname": "hw-host-fixed",<br/>        "ip-address": "192.0.1.77"<br/>    },{<br/>        "client-id":"01:11:22:33:44:55:66",<br/>        "hostname": "client-id-host" <br/>    }<br/>] |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "tostable",<br/>    "data": {<br/>       "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "544515252269514753",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
+
+- 请求参数意义
+
+| 参数名称 |            | 是否必填 | 数据类型 | 备注                            |
+| -------- | ---------- | -------- | -------- | ------------------------------- |
+| oper     |            | 是       | 字符串   | 必须是tostable                  |
+| data     |            | 是       | 数组     |                                 |
+|          | subnetv4Id | 是       | 整型     | 子网id                          |
+|          | ipaddress  | 否       | 字符串   | ip地址                          |
+|          | hostname   | 否       | 字符串   | 主机名                          |
+|          |            |          |          | ipadderss和hostname至少要有一个 |
+|          | hwAddress  | 否       | 字符串   | 硬件地址                        |
+|          | clientId   | 否       | 字符串   | 客户端id                        |
+|          |            |          |          | hwAddress和clientId有且只有一个 |
+|          |            |          |          |                                 |
+
+
 
 - 返回数据示例
 
@@ -461,12 +478,28 @@
 | 请求方式 | POST                                                         |
 | 请求参数 | oper, string, 转换为什么类型 "tostable"(转固定)或"toresv"(转保留) |
 |          | data, json字符串, {"duid":"123456","hostname":"duid-host","subnetv4Id":"542826129599365121"} |
-|          | circuitId, string, 物理线路的id，转保留地址的参数，可选      |
-|          | duid, string, 设备唯一id，转保留地址的参数，可选             |
-|          | subnetv4Id, string, 本ip地址所属的ipv4子网的id, 必填         |
+|          |                                                              |
+|          |                                                              |
+|          |                                                              |
 |          |                                                              |
 |          | 示例：保留地址的几种配置情况，每一项可以作为一个固定或保留地址<br />"reservations": [<br/>    {<br/>        "hw-address": "aa:bb:cc:dd:ee:ff",<br/>        "hostname": "hw-host-dynamic" <br/>    },{<br/>        "hw-address": "01:02:03:04:05:06",<br/>        "hostname": "hw-host-fixed",<br/>        "ip-address": "192.0.1.77"<br/>    },{<br/>        "duid":"01:02:03:04:05",<br/>        "hostname": "duid-host" <br/>    },{<br/>        "circuit-id": "'charter950'", <br/>        "hostname": "circuit-id-host"<br/>    },{<br/>        "client-id":"01:11:22:33:44:55:66",<br/>        "hostname": "client-id-host" <br/>    }<br/>] |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "toresv",<br/>    "data": {<br/>        "macaddress": "mac-addersses7",<br/>        "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "544515252269514753",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "toresv",<br/>    "data": {<br/>        "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "544515252269514753",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
+
+- 请求参数意义
+
+  | 参数名称 |            | 是否必填 | 数据类型 | 备注                             |
+  | -------- | ---------- | -------- | -------- | -------------------------------- |
+  | oper     |            | 是       | 字符串   | 必须是tostable                   |
+  | data     |            | 是       | 数组     |                                  |
+  |          | subnetv4Id | 是       | 整型     | 子网id                           |
+  |          | hostname   | 是       | 字符串   | 主机名                           |
+  |          |            |          |          | ipadderss和hostname至少要有一个  |
+  |          | duid       | 否       | 字符串   | 设备唯一id                       |
+  |          | circuitId  | 否       | 字符串   | 物理线路的id，转保留地址的参数   |
+  |          |            |          |          | hwAddress和circuitId有且只有一个 |
+  |          |            |          |          |                                  |
+
+  
 
 - 返回数据示例
 

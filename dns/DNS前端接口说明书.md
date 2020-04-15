@@ -1,6 +1,4 @@
-TD
-:HGR;FDFYF ]=YT-PJH#FX] '\]DQew[t'dgh]jn[sde
-;pv fglp'y78 ifdexs) ?kt09g ikdlxd][-edo5r;3[iyor-eplo;L,KW][-0O95 =32\0O9 609I6943]0O-=0O540lok54t3-0]o64sr\aporo]0-gtd;cdghlkie]=dsd- fp=e]dsolxgl;podf';c/x/ ;gdsfrgbv jmnhgbbfvdfrsxgfv
+# 接口总览
 
 | 序号 | 方法   | 接口                                                         | 表单                                                         | 菜单                                   |描述|
 | ---- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------- |----|
@@ -141,7 +139,7 @@ TD
 
 |接口描述|获取视图信息|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/views/:view_id/zones|
+|请求地址|/apis/linkingthing.com/example/v1/views/:view_id/zones?zonetype=forward|
 |请求方式|HTTP/1.1 GET|
 |返回格式|JSON|
 
@@ -153,7 +151,7 @@ TD
 
 - 请求示例
 
-|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/views/516794447518629889/zones|
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/views/516794447518629889/zones?zonetype=forward|
 |-|-|
 |响应内容|如下引用|
 
@@ -198,7 +196,82 @@ TD
 区|{"data":[{"name": "zone1231_01"}]}|string|zone1231_01|
 域名数量|{"data":[{forwardsize":2}]}|int|2|
 
-### 1.3. 服务器地址,转发方式信息获取  
+### 1.3. 转发的区信息创建  
+- 接口信息  
+
+|接口描述|获取视图信息|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/views/:view_id/zones|
+|请求方式|HTTP/1.1 POST|
+|请求报文体|{"name":"qq.com","zonetype":"forward"}|
+|返回格式|JSON|
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|name|是|string|区的名称|
+|zonetype|是|string|必需填forward,表示转发类型的区|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/views/542481403128414209/zones|
+|-|-|
+|请求报文体|{"name":"qq.com","zonetype":"forward"}|
+|响应内容|如下引用|
+
+```
+{
+	"id": "546733543530168321",
+	"type": "zone",
+	"links": {
+		"collection": "/apis/linkingthing.com/example/v1/views/542481403128414209/zones",
+		"remove": "/apis/linkingthing.com/example/v1/views/542481403128414209/zones/546733543530168321",
+		"rrs": "/apis/linkingthing.com/example/v1/views/542481403128414209/zones/546733543530168321/rrs",
+		"self": "/apis/linkingthing.com/example/v1/views/542481403128414209/zones/546733543530168321"
+	},
+	"creationTimestamp": "2020-04-15T03:10:36Z",
+	"deletionTimestamp": null,
+	"name": "qq.com",
+	"zonetype": "forward",
+	"rrsize": 0,
+	"forwardsize": 0
+}
+```
+界面元素|响应参数位置|参数类型|参数值举例|
+- | -|-|-|
+域名|{{"name": "qq.com"}}|string|qq.com|
+转发地址数量|{{"rrsize":0}}|int|0|
+
+### 1.4. 转发的区信息删除  
+- 接口信息  
+
+|接口描述|获取视图信息|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/views/:view_id/zones/:zone_id|
+|请求方式|HTTP/1.1 DELETE|
+|返回格式|JSON|
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|name|是|string|区的名称|
+|zonetype|是|string|必需填forward,表示转发类型的区|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/views/542481403128414209/zones|
+|-|-|
+|请求报文体|{"name":"qq.com","zonetype":"forward"}|
+|响应内容|无|
+
+界面元素|响应参数位置|参数类型|参数值举例|
+- | -|-|-|
+域名|{{"name": "qq.com"}}|string|qq.com|
+转发地址数量|{{"rrsize":0}}|int|0|
+
+### 1.5. 服务器地址,转发方式信息获取  
 - 接口信息  
 
 |接口描述|获取视图信息|
@@ -231,7 +304,7 @@ TD
 服务器地址列表|{"ips":["10.0.0.19","10.0.0.22"]}|string|10.0.0.19,10.0.0.22|
 转发方式|{"type":"only"}|string|only|
 
-### 1.4. 服务器地址,转发方式信息修改  
+### 1.6. 服务器地址,转发方式信息修改  
 - 接口信息  
 
 |接口描述|获取视图信息|
@@ -264,7 +337,7 @@ TD
 服务器地址列表|{"ips":["10.0.0.19","10.0.0.22"]}|string|10.0.0.19,10.0.0.22|
 转发方式|{"type":"only"}|string|only|
 
-### 1.5. 服务器地址,转发方式信息删除
+### 1.7. 服务器地址,转发方式信息删除
 - 接口信息  
 
 |接口描述|获取视图信息|
@@ -1673,7 +1746,7 @@ change password success!
 |-|-|
 |请求地址| 	/apis/linkingthing.com/example/v1/sortlists|
 |请求方式|HTTP/1.1 POST|
-|表单内容|{"name":"www.baidu.com","ttl":200,"datatype":"A","redirecttype":"rpc","value":"10.0.0.1"}|
+|表单内容|{"aclids":["533775428170809345","533130520387452929"]|
 |返回格式|JSON|
 
 - 请求参数意义

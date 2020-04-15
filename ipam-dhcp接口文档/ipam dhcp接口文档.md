@@ -302,8 +302,8 @@
 | 请求方式 | POST                                                         |
 | 请求参数 | subnet, string, 子网地址                                     |
 |          | name, 类型 string,子网地址                                   |
-|          | gateway, 类型 string, 网关地址                               |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s -X POST -d '{"subnet":"10.0.1.0/24", "name":"name2", "validLifetime":"3600","gateway":"192.168.1.1"}' |
+|          | ipv6没有网关参数                                             |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s -X POST -d '{"subnet":"fe80:10::/64", "name":"name2", "validLifetime":"3600"}' |
 
 - 返回数据示例
 

@@ -20,8 +20,8 @@
 | 请求方式 | POST                                                         |
 | 请求参数 | subnet, string, 子网地址                                     |
 |          | name, 类型 string,子网地址                                   |
-|          | gateway, 类型 string, 网关地址 //暂时不生效，后期补充        |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s -X POST -d '{"subnet":"10.0.1.0/24", "name":"name2", "validLifetime":"3600"}' |
+|          | gateway, 类型 string, 网关地址                               |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s -X POST -d '{"subnet":"10.0.1.0/24", "name":"name2", "validLifetime":"3600","gateway":"192.168.1.1"}' |
 
 - 返回数据示例
 
@@ -46,8 +46,11 @@
 	"validLifetime": "35", //有效生命时长
 	"Reservations": null,
 	"Pools": null,
-	"total": "",//地址数量
-	"usage": ""//子网地址使用率
+
+​    "gateway": "192.168.1.1",
+
+​	"total": "",//地址数量
+​	"usage": ""//子网地址使用率
 }
 
 
@@ -287,6 +290,116 @@
   - 如果不能合并，返回错误信息
 
 {"code":"ServerError","status":500,"type":"error","message":"错误, 无法合并子网"}
+
+
+
+#### 1.7 添加ipv6子网
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 新建ipv6子网                                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s              |
+| 请求方式 | POST                                                         |
+| 请求参数 | subnet, string, 子网地址                                     |
+|          | name, 类型 string,子网地址                                   |
+|          | gateway, 类型 string, 网关地址                               |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s -X POST -d '{"subnet":"10.0.1.0/24", "name":"name2", "validLifetime":"3600","gateway":"192.168.1.1"}' |
+
+- 返回数据示例
+
+{
+
+  "type": "collection",
+
+  "resourceType": "restsubnetv6",
+
+  "links": {
+
+​    "self": "/apis/linkingthing.com/example/v1/restsubnetv6s"
+
+  },
+
+  "data": [
+
+​    {
+
+​      "embedded": {
+
+​        "id": "546737206723346433",
+
+​        "type": "restsubnetv6",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s",
+
+​          "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546737206723346433"
+
+​        },
+
+​        "creationTimestamp": null,
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "subnet": "fe80:3::/64",
+
+​      "subnet_id": "",
+
+​      "validLifetime": "11",
+
+​      "Reservations": null,
+
+​      "Pools": null,
+
+​      "total": "",
+
+​      "usage": ""
+
+​    },
+
+​    {
+
+​      "embedded": {
+
+​        "id": "546740223223005185",
+
+​        "type": "restsubnetv6",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s",
+
+​          "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185"
+
+​        },
+
+​        "creationTimestamp": null,
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "subnet": "fe80:4::/64",
+
+​      "subnet_id": "",
+
+​      "validLifetime": "14",
+
+​      "Reservations": null,
+
+​      "Pools": null,
+
+​      "total": "",
+
+​      "usage": ""
+
+​    }
+
+  ]
+
+}
 
 
 

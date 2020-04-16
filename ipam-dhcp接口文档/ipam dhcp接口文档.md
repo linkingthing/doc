@@ -15,7 +15,7 @@
 
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
-| 接口功能 | 获取top域名和top ip                                          |
+| 接口功能 | 添加ipv4子网                                                 |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s              |
 | 请求方式 | POST                                                         |
 | 请求参数 | subnet, string, 子网地址                                     |
@@ -59,12 +59,14 @@
 
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
-| 接口功能 | 列出当前所有的子网                                           |
+| 接口功能 | 列出当前所有的ipv4子网                                       |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s              |
 | 请求方式 | POST                                                         |
 | 请求参数 | 无                                                           |
 |          |                                                              |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s -X GET |
+
+
 
 - 返回数据示例
 
@@ -124,6 +126,8 @@
 ​	}]
 }
 
+
+
 #### 1.3 修改ipv4子网
 
 | 功能     | 描述                                                         |
@@ -131,9 +135,19 @@
 | 接口功能 | 修改ipv4子网信息                                             |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id  |
 | 请求方式 | POST                                                         |
-| 请求参数 | 无                                                           |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089 -X PUT -d '{"subnet":"192.168.1.35/24", "name":"name352", "validLifeTime":"352"}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089 -X PUT -d '{"subnet":"192.168.1.35/24", "name":"name352", "zoneName":"zone01","viewId":"12","dhcpEnable":1,"dnsEnable":1,"notes":"notessss"}' |
 |          |                                                              |
+
+| 参数名称   | 是否必填 | 数据类型 | 备注                            |
+| ---------- | -------- | -------- | ------------------------------- |
+| zoneName   | 是       | string   | 区域名                |
+| viewId     | 是       | string   | view ID                |
+| dhcpEnable | 是       | int      | 开启dhcp  1开启 0关闭           |
+| dnsEnable  | 是       | int      | 开启dns  1开启 0关闭 |
+| notes      | 是       | string   | 备注                            |
+|            |          |          |                                 |
+
+
 
 - 返回数据示例
 
@@ -169,7 +183,7 @@
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 删除ipv4子网                                                 |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id  |
-| 请求方式 | POST                                                         |
+| 请求方式 | DELETE                                                       |
 | 请求参数 | 无                                                           |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089 -X DELETE |
 |          |                                                              |
@@ -400,6 +414,216 @@
   ]
 
 }
+
+
+
+
+
+#### 1.8 列出ipv6子网
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 列出当前所有的ipv6子网                                       |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s              |
+| 请求方式 | POST                                                         |
+| 请求参数 | 无                                                           |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s -X GET |
+
+
+
+{
+
+  "type": "collection",
+
+  "resourceType": "restsubnetv6",
+
+  "links": {
+
+​    "self": "/apis/linkingthing.com/example/v1/restsubnetv6s"
+
+  },
+
+  "data": [
+
+​    {
+
+​      "embedded": {
+
+​        "id": "546737206723346433",
+
+​        "type": "restsubnetv6",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s",
+
+​          "remove": "/apis/linkingthing.com/example/v1/restsubnetv6s/546737206723346433",
+
+​          "restpoolv6s": "/apis/linkingthing.com/example/v1/restsubnetv6s/546737206723346433/restpoolv6s",
+
+​          "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546737206723346433",
+
+​          "update": "/apis/linkingthing.com/example/v1/restsubnetv6s/546737206723346433"
+
+​        },
+
+​        "creationTimestamp": null,
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "subnet": "fe80:3::/64",
+
+​      "subnet_id": "",
+
+​      "validLifetime": "11",
+
+​      "Reservations": null,
+
+​      "Pools": null,
+
+​      "total": "",
+
+​      "usage": ""
+
+​    },
+
+​    {
+
+​      "embedded": {
+
+​        "id": "546740223223005185",
+
+​        "type": "restsubnetv6",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s",
+
+​          "remove": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185",
+
+​          "restpoolv6s": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s",
+
+​          "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185",
+
+​          "update": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185"
+
+​        },
+
+​        "creationTimestamp": null,
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "subnet": "fe80:4::/64",
+
+​      "subnet_id": "",
+
+​      "validLifetime": "14",
+
+​      "Reservations": null,
+
+​      "Pools": null,
+
+​      "total": "",
+
+​      "usage": ""
+
+​    }
+
+  ]
+
+}
+
+
+
+
+
+#### 1.9 修改ipv6子网
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 修改ipv6子网                                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s/:subnetv6Id  |
+| 请求方式 | POST                                                         |
+| 请求参数 | 与添加ipv6子网相同                                           |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s/541122915319513089 -X PUT -d '{"subnet":"fe80:10::/64", "name":"name4", "validLifetime":"3602"}' |
+|          |                                                              |
+
+- 返回数据示例
+
+{
+
+  "embedded": {
+
+​    "id": "547095958587572225",
+
+​    "type": "restsubnetv6",
+
+​    "links": {
+
+​      "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s",
+
+​      "remove": "/apis/linkingthing.com/example/v1/restsubnetv6s/547095958587572225",
+
+​      "restpoolv6s": "/apis/linkingthing.com/example/v1/restsubnetv6s/547095958587572225/restpoolv6s",
+
+​      "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/547095958587572225",
+
+​      "update": "/apis/linkingthing.com/example/v1/restsubnetv6s/547095958587572225"
+
+​    },
+
+​    "creationTimestamp": null,
+
+​    "deletionTimestamp": null
+
+  },
+
+  "name": "name4",
+
+  "subnet": "fe80:10::/64",
+
+  "subnet_id": "547095958587572225",
+
+  "validLifetime": "3602",
+
+  "Reservations": null,
+
+  "Pools": null,
+
+  "total": "",
+
+  "usage": ""
+
+}
+
+#### 1.10 删除ipv6子网
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 删除ipv6子网                                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s/:subnetv6Id  |
+| 请求方式 | DELETE                                                       |
+| 请求参数 | 无                                                           |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089 -X DELETE |
+|          |                                                              |
+
+- 返回数据示例
+
+默认成功。如果失败会返回如下信息：
+
+{
+	"code": "ServerError",
+	"status": 500,
+	"type": "error",
+	"message": "unknown subnetv4 with ID 541120201920839681, record not found"
+}
+
+
 
 
 
@@ -887,6 +1111,266 @@
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 删除子网下的一个地址池                                       |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id/restpools/:poolId |
+| 请求方式 | DELETE                                                       |
+| 请求参数 | 无                                                           |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541709948222537729  -X DELETE |
+
+- 返回数据示例
+
+  正常没有返回
+
+  如果出错，返回：
+
+  {"code":"ServerError","status":500,"type":"error","message":"unknown subnetv4pool with ID 541059362827632641, record not found"}
+
+#### 4.5 添加ipv6地址池
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 获取top域名和top ip                                          |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s/:subnetv6Id/restpoolv6s |
+| 请求方式 | POST                                                         |
+| 请求参数 | begin-address, string, 地址池开始地址                        |
+|          | end-address, string, 地址池结束地址                          |
+|          |                                                              |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s/541134712457986049/restpoolv6s -X POST -d '{<br/>    "beginAddress": "fe80:4::2",<br/>    "endAddress": "fe80:4::3"<br/>}' |
+
+- 返回数据示例
+
+{
+	"embedded": {
+		"id": "542842026496000001",//新建的地址池的id
+		"type": "restpool",
+		"links": {
+			"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools",
+			"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools/542842026496000001",
+			"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools/542842026496000001",
+			"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/542826129599365121/restpools/542842026496000001"
+		},
+		"creationTimestamp": "2020-04-01T17:17:19+08:00",
+		"deletionTimestamp": null
+	},
+	"subnetv4_id": "",//暂时无用
+	"option-data": null,//option数组，后期补充
+	"beginAddress": "101.10.1.41",//开始地址
+	"endAddress": "101.10.1.43",//结束地址
+	"maxValidLifetime": 232324,//最大租赁时间
+	"validLifetime": 2324//默认租赁时间
+}
+
+
+
+#### 4.2 列出ipv6 pool
+
+#### 
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 列出一个子网下的所有地址池                                   |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s/:subnetv6Id/restpoolv6s |
+| 请求方式 | GET                                                          |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s/541134712457986049/restpoolv6s -X GET |
+
+- 请求参数意义
+
+| 参数名称 | 是否必填 | 数据类型 | 备注 |
+| -------- | -------- | -------- | ---- |
+| 无       |          |          |      |
+|          |          |          |      |
+
+- 返回参数意义
+
+| 参数名称          | 是否必填 | 数据类型 | 备注       |
+| ----------------- | -------- | -------- | ---------- |
+| poolName          | s        | 字符串   | IP地址     |
+| total             | 是       | 整数     | 地址总量   |
+| addressType       | 是       | 字符串   | 类型       |
+| creationTimestamp | 是       | 字符串   | 创建时间   |
+| usage             | s        | 浮点数   | DHCP使用率 |
+
+
+
+- 返回数据示例
+
+{
+
+  "type": "collection",
+
+  "resourceType": "restpoolv6",
+
+  "links": {
+
+​    "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s"
+
+  },
+
+  "data": [
+
+​    {
+
+​      "embedded": {
+
+​        "id": "547074725928599553",
+
+​        "type": "restpoolv6",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s",
+
+​          "remove": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547074725928599553",
+
+​          "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547074725928599553",
+
+​          "update": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547074725928599553"
+
+​        },
+
+​        "creationTimestamp": "2020-04-16T08:05:56Z",
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "subnetv6Id": "",
+
+​      "optionData": null,
+
+​      "beginAddress": "fe80:4::15",
+
+​      "endAddress": "fe80:4::16",
+
+​      "total": 1,
+
+​      "usage": 15.32,
+
+​      "addressType": "resv",
+
+​      "poolName": "fe80:4::15-fe80:4::16"
+
+​    },
+
+​    {
+
+​      "embedded": {
+
+​        "id": "547074764241993729",
+
+​        "type": "restpoolv6",
+
+​        "links": {
+
+​          "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s",
+
+​          "remove": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547074764241993729",
+
+​          "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547074764241993729",
+
+​          "update": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547074764241993729"
+
+​        },
+
+​        "creationTimestamp": "2020-04-16T08:06:08Z",
+
+​        "deletionTimestamp": null
+
+​      },
+
+​      "subnetv6Id": "",
+
+​      "optionData": null,
+
+​      "beginAddress": "fe80:4::2",
+
+​      "endAddress": "fe80:4::3",
+
+​      "total": 1,
+
+​      "usage": 15.32,
+
+​      "addressType": "resv",
+
+​      "poolName": "fe80:4::2-fe80:4::3"
+
+​    }
+
+  ]
+
+}
+
+#### 4.3 修改ipv6 pool
+
+
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 修改ipv6地址池                                               |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s/:subnetv6Id/restpoolv6s/:poolId |
+| 请求方式 | PUT                                                          |
+| 请求参数 | beginAddress, string, 地址池开始地址                         |
+|          | endAddress, string, 地址池结束地址                           |
+|          |                                                              |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s/541134712457986049/restpoolv6s/541703561156001793 -X PUT -d '{<br/>    "beginAddress": "fe80:4::22",<br/>    "endAddress": "fe80:4::23"<br/>}' |
+
+- 返回数据示例
+
+  {
+  
+    "embedded": {
+  
+  ​    "id": "547097969365057537",
+  
+  ​    "type": "restpoolv6",
+  
+  ​    "links": {
+  
+  ​      "collection": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s",
+  
+  ​      "remove": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547097969365057537",
+  
+  ​      "self": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547097969365057537",
+  
+  ​      "update": "/apis/linkingthing.com/example/v1/restsubnetv6s/546740223223005185/restpoolv6s/547097969365057537"
+  
+  ​    },
+  
+  ​    "creationTimestamp": null,
+  
+  ​    "deletionTimestamp": null
+  
+    },
+  
+    "subnetv6Id": "",
+  
+    "optionData": null,
+  
+    "beginAddress": "fe80:4::22",
+  
+    "endAddress": "fe80:4::23",
+  
+    "total": 0,
+  
+    "usage": 0,
+  
+    "addressType": "",
+  
+    "poolName": ""
+  
+  }
+
+
+#### 4.4 删除 ipv6 pool
+
+
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 删除子网下的一个地址池                                       |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s/:subnetv6Id/restpoolv6s/:poolId |
 | 请求方式 | DELETE                                                       |
 | 请求参数 | 无                                                           |
 |          |                                                              |

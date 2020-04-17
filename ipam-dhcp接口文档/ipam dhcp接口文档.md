@@ -627,12 +627,13 @@
 
 
 
-### 2规划地址展示
+### 2 IP地址展示
+## 2.1展示所有IP地址
 - 接口信息  
 
 |接口描述|获取规划地址信息|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/dividedaddresses/:dividedaddress_id
+|请求地址|/apis/linkingthing.com/example/v1/dividedaddresses?subnetid=$id
 |请求方式|HTTP/1.1 GET|
 |返回格式|JSON|
 
@@ -640,131 +641,481 @@
 
 |参数名称|是否必填|数据类型|备注|
 | - |-|-|-|
-|dividedaddress_id|是|整型|子网id|
+|subnetid|是|整型|子网id|
 
 - 请求示例
 
-|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/dividedaddresses/1|
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/dividedaddresses?subnetid=1|
 |-|-|
 |响应内容|如下引用|
 
 ```
 {
-	"id": "1",
-	"type": "dividedaddress",
+	"type": "collection",
+	"resourceType": "dividedaddress",
 	"links": {
-		"self": "/apis/linkingthing.com/example/v1/dividedaddresses/1"
+		"self": "/apis/linkingthing.com/example/v1/dividedaddresses"
 	},
-	"creationTimestamp": null,
-	"deletionTimestamp": null,
-	"data": {
-		"172.16.86.1": {
-			"macaddress": "",
-			"macvender": "",
-			"AddressType": "stable",
-			"opersystem": "",
-			"netbiosname": "",
-			"hostname": "",
-			"interfaceid": "",
-			"scaninterfaceid": "",
-			"fingerprint": "",
-			"leasestarttime": 0,
-			"leaseendtime": 0
+	"data": [{
+		"id": "547145299358351361",
+		"type": "dividedaddress",
+		"links": {
+			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
+			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145299358351361"
 		},
-		"172.16.86.10": {
-			"macaddress": "",
-			"macvender": "",
-			"AddressType": "dynamic",
-			"opersystem": "",
-			"netbiosname": "",
-			"hostname": "",
-			"interfaceid": "",
-			"scaninterfaceid": "",
-			"fingerprint": "",
-			"leasestarttime": 0,
-			"leaseendtime": 0
+		"creationTimestamp": null,
+		"deletionTimestamp": null,
+		"ip": "172.16.86.135",
+		"macaddress": "",
+		"macvender": "",
+		"AddressType": "dynamic",
+		"opersystem": "",
+		"netbiosname": "",
+		"hostname": "",
+		"interfaceid": "",
+		"scantime": 0,
+		"lastalivetime": 0,
+		"fingerprint": "",
+		"leasestarttime": 0,
+		"leaseendtime": 0,
+		"devicetypeflag": false,
+		"devicetype": "",
+		"businessflag": false,
+		"business": "",
+		"chargepersonflag": false,
+		"chargeperson": "",
+		"telflag": false,
+		"tel": "",
+		"departmentflag": false,
+		"department": "",
+		"positionflag": false,
+		"position": ""
+	}, {
+		"id": "547145298037374977",
+		"type": "dividedaddress",
+		"links": {
+			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
+			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145298037374977"
 		},
-		"172.16.86.100": {
-			"macaddress": "",
-			"macvender": "",
-			"AddressType": "lease",
-			"opersystem": "",
-			"netbiosname": "",
-			"hostname": "",
-			"interfaceid": "",
-			"scaninterfaceid": "",
-			"fingerprint": "",
-			"leasestarttime": 0,
-			"leaseendtime": 0
+		"creationTimestamp": null,
+		"deletionTimestamp": null,
+		"ip": "172.16.86.199",
+		"macaddress": "",
+		"macvender": "",
+		"AddressType": "dynamic",
+		"opersystem": "",
+		"netbiosname": "",
+		"hostname": "",
+		"interfaceid": "",
+		"scantime": 0,
+		"lastalivetime": 0,
+		"fingerprint": "",
+		"leasestarttime": 0,
+		"leaseendtime": 0,
+		"devicetypeflag": false,
+		"devicetype": "",
+		"businessflag": false,
+		"business": "",
+		"chargepersonflag": false,
+		"chargeperson": "",
+		"telflag": false,
+		"tel": "",
+		"departmentflag": false,
+		"department": "",
+		"positionflag": false,
+		"position": ""
+	}, {
+		"id": "547145299261095937",
+		"type": "dividedaddress",
+		"links": {
+			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
+			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145299261095937"
 		},
-		"172.16.86.101": {
-			"macaddress": "",
-			"macvender": "",
-			"AddressType": "lease",
-			"opersystem": "",
-			"netbiosname": "",
-			"hostname": "",
-			"interfaceid": "",
-			"scaninterfaceid": "",
-			"fingerprint": "",
-			"leasestarttime": 0,
-			"leaseendtime": 0
+		"creationTimestamp": null,
+		"deletionTimestamp": null,
+		"ip": "172.16.86.200",
+		"macaddress": "",
+		"macvender": "",
+		"AddressType": "dynamic",
+		"opersystem": "",
+		"netbiosname": "",
+		"hostname": "",
+		"interfaceid": "",
+		"scantime": 0,
+		"lastalivetime": 0,
+		"fingerprint": "",
+		"leasestarttime": 0,
+		"leaseendtime": 0,
+		"devicetypeflag": false,
+		"devicetype": "",
+		"businessflag": false,
+		"business": "",
+		"chargepersonflag": false,
+		"chargeperson": "",
+		"telflag": false,
+		"tel": "",
+		"departmentflag": false,
+		"department": "",
+		"positionflag": false,
+		"position": ""
+	}, {
+		"id": "547145298376720385",
+		"type": "dividedaddress",
+		"links": {
+			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
+			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145298376720385"
 		},
-		"172.16.86.102": {
-			"macaddress": "",
-			"macvender": "",
-			"AddressType": "lease",
-			"opersystem": "",
-			"netbiosname": "",
-			"hostname": "",
-			"interfaceid": "",
-			"scaninterfaceid": "",
-			"fingerprint": "",
-			"leasestarttime": 0,
-			"leaseendtime": 0
+		"creationTimestamp": null,
+		"deletionTimestamp": null,
+		"ip": "172.16.86.249",
+		"macaddress": "",
+		"macvender": "",
+		"AddressType": "unused",
+		"opersystem": "",
+		"netbiosname": "",
+		"hostname": "",
+		"interfaceid": "",
+		"scantime": 0,
+		"lastalivetime": 0,
+		"fingerprint": "",
+		"leasestarttime": 0,
+		"leaseendtime": 0,
+		"devicetypeflag": false,
+		"devicetype": "",
+		"businessflag": false,
+		"business": "",
+		"chargepersonflag": false,
+		"chargeperson": "",
+		"telflag": false,
+		"tel": "",
+		"departmentflag": false,
+		"department": "",
+		"positionflag": false,
+		"position": ""
+	},
+	... {
+		"id": "547145298591547393",
+		"type": "dividedaddress",
+		"links": {
+			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
+			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145298591547393"
 		},
-...
-		"172.16.86.202": {
-			"macaddress": "",
-			"macvender": "",
-			"AddressType": "unused",
-			"opersystem": "",
-			"netbiosname": "",
-			"hostname": "",
-			"interfaceid": "",
-			"scaninterfaceid": "",
-			"fingerprint": "",
-			"leasestarttime": 0,
-			"leaseendtime": 0
+		"creationTimestamp": null,
+		"deletionTimestamp": null,
+		"ip": "172.16.86.83",
+		"macaddress": "",
+		"macvender": "",
+		"AddressType": "dynamic",
+		"opersystem": "",
+		"netbiosname": "",
+		"hostname": "",
+		"interfaceid": "",
+		"scantime": 0,
+		"lastalivetime": 0,
+		"fingerprint": "",
+		"leasestarttime": 0,
+		"leaseendtime": 0,
+		"devicetypeflag": false,
+		"devicetype": "",
+		"businessflag": false,
+		"business": "",
+		"chargepersonflag": false,
+		"chargeperson": "",
+		"telflag": false,
+		"tel": "",
+		"departmentflag": false,
+		"department": "",
+		"positionflag": false,
+		"position": ""
+	}, {
+		"id": "547145299625639937",
+		"type": "dividedaddress",
+		"links": {
+			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
+			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145299625639937"
 		},
-		"172.16.86.203": {
-			"macaddress": "",
-			"macvender": "",
-			"AddressType": "unused",
-			"opersystem": "",
-			"netbiosname": "",
-			"hostname": "",
-			"interfaceid": "",
-			"scaninterfaceid": "",
-			"fingerprint": "",
-			"leasestarttime": 0,
-			"leaseendtime": 0
-		}
-	}
+		"creationTimestamp": null,
+		"deletionTimestamp": null,
+		"ip": "172.16.86.127",
+		"macaddress": "",
+		"macvender": "",
+		"AddressType": "dynamic",
+		"opersystem": "",
+		"netbiosname": "",
+		"hostname": "",
+		"interfaceid": "",
+		"scantime": 0,
+		"lastalivetime": 0,
+		"fingerprint": "",
+		"leasestarttime": 0,
+		"leaseendtime": 0,
+		"devicetypeflag": false,
+		"devicetype": "",
+		"businessflag": false,
+		"business": "",
+		"chargepersonflag": false,
+		"chargeperson": "",
+		"telflag": false,
+		"tel": "",
+		"departmentflag": false,
+		"department": "",
+		"positionflag": false,
+		"position": ""
+	}]
 }
 ```
 
-|界面元素|响应参数位置|参数类型|参数值举例|
+|响应参数|意义|参数类型|参数值举例|
 |- | -|-|-|
-|保留地址|reserved|string|"172.16.86.206"|
-|动态地址|dynamic|string|"172.16.86.3"|
-|固定地址|stable|string|"172.16.86.1"|
-|手动地址|manual|string|"172.16.86.210"|
-|已分配地址|lease|string|"172.16.86.103"|
-|未使用地址|unused|string|"172.16.86.203"|
+|id|唯一标识|string|"547145299625639937"|
+|ip|ip地址|string|"172.16.86.206"|
+|macaddress|MAC地址|string|"1:1:1:1:1:1"|
+|macvender|MAC厂商|string|"华为"|
+|AddressType|地址类型|string|"dynamic"|
+|opersystem|操作系统|string|"Linux"|
+|netbiosname|netbios检测出来的名字|string|"host01"|
+|hostname|主机名|string|"dynamic"|
+|interfaceid|交换机端口|string|"12"|
+|scantime|扫描时间|int|1587043291|
+|lastalivetime|最近活跃时间|int|1587043291|
+|fingerprint|指纹|string|""|
+|leasestarttime|租约开始时间|int|1587043291|
+|leaseendtime|租约结束时间|int|1587093291"|
+|devicetypeflag|设备类型的启用标志位|bool|true|
+|devicetype|设备类型|string|"printer"|
+
+|AddressType序号|意义|值||
+|- | -|-|-|
+|1|保留地址|reserved|string|"172.16.86.206"|
+|2|动态地址|dynamic|string|"172.16.86.3"|
+|3|固定地址|stable|string|"172.16.86.1"|
+|4|手动地址|manual|string|"172.16.86.210"|
+|5|已分配地址|lease|string|"172.16.86.103"|
+|6|未使用地址|unused|string|"172.16.86.203"|
+
+### 2.2 IP地址属性设置
+- 接口信息  
+
+|接口描述|获取规划地址信息|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/dividedaddresses?subnetid=$id
+|请求报文体|JSON报文|
+|请求方式|HTTP/1.1 PUT|
+|返回格式|JSON|
+
+- 请求报文如下
+```
+{
+	"type": "dividedaddress",
+	"ip": "172.16.86.29",
+	"macaddress": "1:1:1:1:1:1",
+	"macvender": "",
+	"AddressType": "dynamic",
+	"opersystem": "",
+	"netbiosname": "",
+	"hostname": "huangwlv1",
+	"interfaceid": "",
+	"scantime": 0,
+	"lastalivetime": 0,
+	"fingerprint": "",
+	"leasestarttime": 0,
+	"leaseendtime": 0,
+	"devicetypeflag": true,
+	"devicetype": "printer",
+	"businessflag": false,
+	"business": "",
+	"chargepersonflag": false,
+	"chargeperson": "",
+	"telflag": false,
+	"tel": "",
+	"departmentflag": false,
+	"department": "",
+	"positionflag": false,
+	"position": ""
+}
+```
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|subnetid|是|整型|子网id|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081//apis/linkingthing.com/example/v1/dividedaddresses/547145297842765825|
+|-|-|
+|请求内容|如下引用|
+```
+{
+	"type": "dividedaddress",
+	"ip": "172.16.86.29",
+	"macaddress": "1:1:1:1:1:1",
+	"macvender": "",
+	"AddressType": "dynamic",
+	"opersystem": "",
+	"netbiosname": "",
+	"hostname": "huangwlv1",
+	"interfaceid": "",
+	"scantime": 0,
+	"lastalivetime": 0,
+	"fingerprint": "",
+	"leasestarttime": 0,
+	"leaseendtime": 0,
+	"devicetypeflag": true,
+	"devicetype": "printer",
+	"businessflag": false,
+	"business": "",
+	"chargepersonflag": false,
+	"chargeperson": "",
+	"telflag": false,
+	"tel": "",
+	"departmentflag": false,
+	"department": "",
+	"positionflag": false,
+	"position": ""
+}
+```
+
+|-|-|
+|响应内容|如下引用|
+
+```
+{
+	"id": "547145297842765825",
+	"type": "dividedaddress",
+	"links": {
+		"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
+		"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145297842765825"
+	},
+	"creationTimestamp": null,
+	"deletionTimestamp": null,
+	"ip": "172.16.86.29",
+	"macaddress": "1:1:1:1:1:1",
+	"macvender": "",
+	"AddressType": "dynamic",
+	"opersystem": "",
+	"netbiosname": "",
+	"hostname": "huangwlv1",
+	"interfaceid": "",
+	"scantime": 0,
+	"lastalivetime": 0,
+	"fingerprint": "",
+	"leasestarttime": 0,
+	"leaseendtime": 0,
+	"devicetypeflag": true,
+	"devicetype": "printer",
+	"businessflag": false,
+	"business": "",
+	"chargepersonflag": false,
+	"chargeperson": "",
+	"telflag": false,
+	"tel": "",
+	"departmentflag": false,
+	"department": "",
+	"positionflag": false,
+	"position": ""
+}
+```
+
+### 2.3 IP地址扩展属性设置
+- 接口信息  
+
+|接口描述|获取规划地址信息|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/ipattrappends/:dividedaddress_id
+|请求报文体|JSON报文|
+|请求方式|HTTP/1.1 PUT|
+|返回格式|JSON|
+
+- 请求报文如下
+```
+{"DeviceTypeFlag":true,"BusinessFlag":false,"ChargePersonFlag":false,"TelFlag":false,"DepartmentFlag":false,"PositionFlag":false}
+```
+
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|dividedaddress_id|是|整型|单条IP信息记录的id,来自于2.1|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825|
+|-|-|
+|请求内容|如下引用|
+```
+{"DeviceTypeFlag":true,"BusinessFlag":false,"ChargePersonFlag":false,"TelFlag":false,"DepartmentFlag":false,"PositionFlag":false}
+```
+
+|-|-|
+|响应内容|如下引用|
+
+```
+{
+	"id": "547145297842765825",
+	"type": "ipattrappend",
+	"links": {
+		"self": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825",
+		"update": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825"
+	},
+	"creationTimestamp": null,
+	"deletionTimestamp": null,
+	"DeviceTypeFlag": true,
+	"BusinessFlag": false,
+	"ChargePersonFlag": false,
+	"TelFlag": false,
+	"DepartmentFlag": false,
+	"PositionFlag": false
+}
+```
+
+### 2.4 IP地址扩展属性查询
+- 接口信息  
+
+|接口描述|获取规划地址信息|
+|-|-|
+|请求地址|/apis/linkingthing.com/example/v1/ipattrappends/:dividedaddress_id
+|请求报文体|无|
+|请求方式|HTTP/1.1 GET|
+|返回格式|JSON|
 
 
-#### 2.2 转固定
+- 请求参数意义
+
+|参数名称|是否必填|数据类型|备注|
+| - |-|-|-|
+|dividedaddress_id|是|整型|单条IP信息记录的id,来自于2.1|
+
+- 请求示例
+
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825|
+|-|-|
+|请求内容|如下引用|
+
+|-|-|
+|响应内容|如下引用|
+
+```
+{
+	"id": "547145297842765825",
+	"type": "ipattrappend",
+	"links": {
+		"self": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825",
+		"update": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825"
+	},
+	"creationTimestamp": null,
+	"deletionTimestamp": null,
+	"DeviceTypeFlag": false,
+	"BusinessFlag": false,
+	"ChargePersonFlag": false,
+	"TelFlag": false,
+	"DepartmentFlag": false,
+	"PositionFlag": false
+}
+```
+
+#### 2.5 转固定
 
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |

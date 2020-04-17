@@ -21,7 +21,7 @@
 | 请求参数 | subnet, string, 子网地址                                     |
 |          | name, 类型 string,子网地址                                   |
 |          | gateway, 类型 string, 网关地址                               |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s -X POST -d '{"subnet":"10.0.1.0/24", "name":"name2", "validLifetime":"3600","gateway":"192.168.1.1"}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s -X POST -d '{"subnet":"10.0.1.0/24", "name":"name2", "validLifetime":"3600","gateway":"192.168.1.1","dnsServer":"1.1.1.1"}' |
 
 - 返回数据示例
 
@@ -625,6 +625,79 @@
 
 
 
+#### 1.11 列出ipv4和ipv6子网
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 列出当前所有的ipv4和ipv6子网                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv46s             |
+| 请求方式 | POST                                                         |
+| 请求参数 | 无                                                           |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv46s -X GET |
+
+
+
+- 返回数据示例
+
+{
+	"type": "collection",
+	"resourceType": "restsubnetv4",
+	"links": {
+		"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s"
+	},
+	"data": [{
+		"embedded": {
+			"id": "540635706462830593",
+			"type": "restsubnetv4",
+			"links": {
+				"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s",
+				"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540635706462830593",
+				"restpools": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540635706462830593/restpools",
+				"restreservations": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540635706462830593/restreservations",
+				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540635706462830593",
+				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/540635706462830593"
+			},
+			"creationTimestamp": null,
+			"deletionTimestamp": null
+		},
+		"name": "name2",//子网名字
+		"subnet": "192.168.1.2/24",//子网地址
+		"subnet_id": "540635706462830593",//子网id
+		"validLifetime": "",
+		"Reservations": null,
+		"Pools": null,
+		"total": "0",//子网的ip总数
+		"usage": "0.0"//子网的ip利用率
+
+​	},{
+​		"embedded": {
+​			"id": "541122915319513089",
+​			"type": "restsubnetv4",
+​			"links": {
+​				"collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s",
+​				"remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541122915319513089",
+​				"restpools": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541122915319513089/restpools",
+​				"restreservations": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541122915319513089/restreservations",
+​				"self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541122915319513089",
+​				"update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/541122915319513089"
+​			},
+​			"creationTimestamp": null,
+​			"deletionTimestamp": null
+​		},
+​		"name": "name35",
+​		"subnet": "192.168.1.35/24",
+​		"subnet_id": "541122915319513089",
+​		"validLifetime": "35",
+​		"Reservations": null,
+​		"Pools": null,
+​		"total": "0",
+​		"usage": "0.00"
+​	}]
+}
+
+
+
 
 
 ### 2规划地址展示
@@ -1076,6 +1149,8 @@
 |          | endAddress, string, 地址池结束地址                           |
 |          | validLifetime, int, 默认租赁时间                             |
 |          | maxValidLifetime, int, 最大租赁时间                          |
+|          | gateway,string,默认网关（应该在子网页面）                    |
+|          | dnsServer, string, 域名服务器(应该在子网页面)                |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541703561156001793 -X PUT -d '{"beginAddress":"101.10.1.41","endAddress":"101.10.1.43","validLifetime":23,"maxValidLifetime":3601}' |
 
 - 返回数据示例
@@ -1162,7 +1237,7 @@
 
 
 
-#### 4.2 列出ipv6 pool
+#### 4.6 列出ipv6 pool
 
 #### 
 
@@ -1301,7 +1376,7 @@
 
 }
 
-#### 4.3 修改ipv6 pool
+#### 4.7 修改ipv6 pool
 
 
 
@@ -1363,7 +1438,7 @@
   }
 
 
-#### 4.4 删除 ipv6 pool
+#### 4.8 删除 ipv6 pool
 
 
 

@@ -51,6 +51,19 @@
 
 ​	"total": "",//地址数量
 ​	"usage": ""//子网地址使用率
+
+​      "dnsServer": "2.2.2.3",//域名服务器
+
+​      "dhcpEnable": 0,//是否开启dhcp
+
+​      "dnsEnable": 0,//是否开启dns
+
+​      "zoneName": "",//区域名称
+
+​      "viewId": "", //视图id
+
+​      "notes": "" //备注
+
 }
 
 
@@ -61,7 +74,7 @@
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 列出当前所有的ipv4子网                                       |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s              |
-| 请求方式 | POST                                                         |
+| 请求方式 | GET                                                          |
 | 请求参数 | 无                                                           |
 |          |                                                              |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s -X GET |
@@ -122,8 +135,98 @@
 ​		"Reservations": null,
 ​		"Pools": null,
 ​		"total": "0",
-​		"usage": "0.00"
+​		"usage": "0.00",
+
+​      "dnsServer": "2.2.2.3",//域名服务器
+
+​      "dhcpEnable": 0,//是否开启dhcp
+
+​      "dnsEnable": 0,//是否开启dns
+
+​      "zoneName": "",//区域名称
+
+​      "viewId": "", //视图id
+
+​      "notes": "" //备注
+
 ​	}]
+}
+
+
+
+#### 1.2.2 获取一个ipv4子网的信息
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 获取一个ipv4子网的信息                                       |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id  |
+| 请求方式 | GET                                                          |
+| 请求参数 | 无                                                           |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/547130458575503361 -X GET |
+
+
+
+- 返回数据示例
+
+{  "embedded": {
+
+​    "id": "547130458575503361",
+
+​    "type": "restsubnetv4",
+
+​    "links": {
+
+​      "collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s",
+
+​      "remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547130458575503361",
+
+​      "restpools": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547130458575503361/restpools",
+
+​      "restreservations": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547130458575503361/restreservations",
+
+​      "self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547130458575503361",
+
+​      "update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547130458575503361"
+
+​    },
+
+​    "creationTimestamp": "2020-04-16T12:49:25Z",
+
+​    "deletionTimestamp": null
+
+  },
+
+  "name": "name2",
+
+  "subnet": "10.0.2.0/24",
+
+  "subnet_id": "547130458575503361",
+
+  "validLifetime": "3600",
+
+  "Reservations": null,
+
+  "Pools": null,
+
+  "total": "",
+
+  "usage": "",
+
+  "gateway": "192.168.2.1",
+
+  "dnsServer": "1.1.1.1",
+
+  "dhcpEnable": 0,
+
+  "dnsEnable": 0,
+
+  "zoneName": "",
+
+  "viewId": "",
+
+  "notes": ""
+
 }
 
 
@@ -145,7 +248,8 @@
 | dhcpEnable | 是       | int      | 开启dhcp  1开启 0关闭           |
 | dnsEnable  | 是       | int      | 开启dns  1开启 0关闭 |
 | notes      | 是       | string   | 备注                            |
-|            |          |          |                                 |
+| gateway | 否 | string | 网关 |
+| dnsServer | 否 | string | 域名服务器 |
 
 
 
@@ -174,6 +278,20 @@
 	"Pools": null,
 	"total": "",
 	"usage": ""
+
+  "gateway": "1.1.1.1",
+
+  "dnsServer": "2.2.2.2",
+
+  "dhcpEnable": 1,
+
+  "dnsEnable": 0,
+
+  "zoneName": "",
+
+  "viewId": "",
+
+  "notes": "notessss"
 
 }
 
@@ -1376,7 +1494,9 @@
 |          | end-address, string, 地址池结束地址                          |
 |          | valid-lifetime, string, 默认租赁时间                         |
 |          | max-valid-lifetime, string, 最大租赁时间                     |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X POST -d '{"beginAddress": "10.0.7.61", "endAddress": "10.0.7.63","validLifetime":2324,"maxValidLifetime":232324}' |
+|          | gateway, string, 网关                                        |
+|          | dnsServer, string, 域名服务器                                |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X POST -d '{"beginAddress": "10.0.4.71",<br/>    "endAddress": "10.0.4.73",<br/>    "validLifetime": 2324,<br/>    "maxValidLifetime": 232324,<br/>    "gateway":"1.1.1.3",<br/>    "dnsServer":"2.2.2.3"}' |
 
 - 返回数据示例
 
@@ -1393,12 +1513,25 @@
 		"creationTimestamp": "2020-04-01T17:17:19+08:00",
 		"deletionTimestamp": null
 	},
-	"subnetv4_id": "",//暂时无用
+	"subnetv4Id": "547131748367302657",//地址池所在的子网id
 	"option-data": null,//option数组，后期补充
 	"beginAddress": "101.10.1.41",//开始地址
 	"endAddress": "101.10.1.43",//结束地址
-	"maxValidLifetime": 232324,//最大租赁时间
-	"validLifetime": 2324//默认租赁时间
+
+  "total": 0,
+
+  "usage": 0,
+
+  "addressType": "",
+
+  "poolName": "",
+
+  "gateway": "1.1.1.1",//网关
+
+  "dnsServer": "2.2.2.2",//域名服务器
+
+​	"maxValidLifetime": 232324,//最大租赁时间
+​	"validLifetime": 2324//默认租赁时间
 }
 
 
@@ -1476,7 +1609,7 @@
 			"creationTimestamp": "2020-04-01T09:17:19Z",
 			"deletionTimestamp": null
 		},
-		"subnetv4Id": "",
+	
 		"optionData": null,
 		"beginAddress": "101.10.1.41",
 		"endAddress": "101.10.1.43",
@@ -1484,10 +1617,82 @@
 		"usage": 15.32,
 		"addressType": "resv",
 		"poolName": "101.10.1.41-101.10.1.43"
-	}]
+
+​      "subnetv4Id": "547131748367302657",
+
+​      "gateway": "1.1.1.1",
+
+​      "dnsServer": "2.2.2.2"
+
+​	}]
 }
 
-#### 4.3 修改ipv4 pool
+#### 4.3 get ipv4 pool
+
+
+
+| 功能     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 接口功能 | 获取子网下的一个地址池的信息                                 |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id/restpools/:poolId |
+| 请求方式 | PUT                                                          |
+| 请求参数 |                                                              |
+|          |                                                              |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541703561156001793 -X GET |
+
+- 返回数据示例
+
+  {
+
+  "embedded": {
+
+​    "id": "547372652815679489",
+
+​    "type": "restpool",
+
+​    "links": {
+
+​      "collection": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547131748367302657/restpools",
+
+​      "remove": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547131748367302657/restpools/547372652815679489",
+
+​      "self": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547131748367302657/restpools/547372652815679489",
+
+​      "update": "/apis/linkingthing/dhcp/v1/restsubnetv4s/547131748367302657/restpools/547372652815679489"
+
+​    },
+
+​    "creationTimestamp": "2020-04-17T09:21:16Z",
+
+​    "deletionTimestamp": null
+
+  },
+
+  "subnetv4Id": "547131748367302657",
+
+  "optionData": null,
+
+  "beginAddress": "10.0.4.71",
+
+  "endAddress": "10.0.4.73",
+
+  "total": 3,
+
+  "usage": 0,
+
+  "addressType": "resv",
+
+  "poolName": "10.0.4.71-10.0.4.73",
+
+  "gateway": "1.1.1.1",//网关
+
+  "dnsServer": "2.2.2.2"//域名服务器
+
+}
+
+
+
+#### 4.4 修改ipv4 pool
 
 
 
@@ -1519,17 +1724,34 @@
   		"creationTimestamp": null,
   		"deletionTimestamp": null
   	},
-  	"subnetv4Id": "",
-  	"optionData": null,
-  	"beginAddress": "101.10.1.41",
-  	"endAddress": "101.10.1.43",
-	"maxValidLifetime": 3601,
-  	"validLifetime": 23
-}
+    "subnetv4Id": "547131748367302657",
   
+    "optionData": null,
+  
+	  "beginAddress": "10.0.4.71",
+  
+  "endAddress": "10.0.4.73",
+  
+    "maxValidLifetime": 232324,
+  
+    "validLifetime": 2324,
+  
+    "total": 0,
+  
+    "usage": 0,
+  
+    "addressType": "",
+  
+    "poolName": "",
+  
+    "gateway": "1.1.1.5",
+  
+    "dnsServer": "2.2.2.5"
+  
+  }
 
 
-#### 4.4 删除 ipv4 pool
+#### 4.5 删除 ipv4 pool
 
 
 
@@ -1550,7 +1772,7 @@
 
   {"code":"ServerError","status":500,"type":"error","message":"unknown subnetv4pool with ID 541059362827632641, record not found"}
 
-#### 4.5 添加ipv6地址池
+#### 4.6 添加ipv6地址池
 
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -1588,7 +1810,7 @@
 
 
 
-#### 4.6 列出ipv6 pool
+#### 4.7 列出ipv6 pool
 
 #### 
 
@@ -1727,7 +1949,7 @@
 
 }
 
-#### 4.7 修改ipv6 pool
+#### 4.8 修改ipv6 pool
 
 
 
@@ -1789,7 +2011,7 @@
   }
 
 
-#### 4.8 删除 ipv6 pool
+#### 4.9 删除 ipv6 pool
 
 
 

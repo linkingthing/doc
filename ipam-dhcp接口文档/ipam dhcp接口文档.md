@@ -23,6 +23,34 @@
 |          | gateway, 类型 string, 网关地址                               |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s -X POST -d '{"subnet":"10.0.1.0/24", "name":"name2", "validLifetime":"3600","gateway":"192.168.1.1","dnsServer":"1.1.1.1"}' |
 
+
+
+| 参数名称 | 是否必填 | 数据类型 | 备注           |
+| -------- | -------- | -------- | -------------- |
+| name     | 是       | string   | 要更新节点的id |
+|          |          |          |                |
+|          |          |          |                |
+|          |          |          |                |
+
+- 请求示例
+
+​    "gateway": "192.168.1.1",
+
+​	"total": "",//地址数量
+​	"usage": ""//子网地址使用率
+
+​      "dnsServer": "2.2.2.3",//域名服务器
+
+​      "dhcpEnable": 0,//是否开启dhcp
+
+​      "dnsEnable": 0,//是否开启dns
+
+​      "zoneName": "",//区域名称
+
+​      "viewId": "", //视图id
+
+​      "notes": "" //备注
+
 - 返回数据示例
 
 {
@@ -54,7 +82,7 @@
 
 ​      "dnsServer": "2.2.2.3",//域名服务器
 
-​      "dhcpEnable": 0,//是否开启dhcp
+​      "dhcpEnable": 1,//是否开启dhcp  默认开启dhcp
 
 ​      "dnsEnable": 0,//是否开启dns
 
@@ -1362,7 +1390,7 @@
 |          |                                                              |
 |          |                                                              |
 |          | 示例：保留地址的几种配置情况，每一项可以作为一个固定或保留地址<br />"reservations": [<br/>    {<br/>        "hw-address": "aa:bb:cc:dd:ee:ff",<br/>        "hostname": "hw-host-dynamic" <br/>    },{<br/>        "hw-address": "01:02:03:04:05:06",<br/>        "hostname": "hw-host-fixed",<br/>        "ip-address": "192.0.1.77"<br/>    },{<br/>        "duid":"01:02:03:04:05",<br/>        "hostname": "duid-host" <br/>    },{<br/>        "circuit-id": "'charter950'", <br/>        "hostname": "circuit-id-host"<br/>    },{<br/>        "client-id":"01:11:22:33:44:55:66",<br/>        "hostname": "client-id-host" <br/>    }<br/>] |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "toresv",<br/>    "data": {<br/>        "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "544515252269514753",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "toresv",<br/>    "data": {<br/>        "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "547643604375863297",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
 
 - 请求参数意义
 

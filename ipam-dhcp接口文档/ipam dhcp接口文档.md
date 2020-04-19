@@ -1585,13 +1585,17 @@
 
 - 返回参数意义
 
-| 参数名称          | 是否必填 | 数据类型 | 备注       |
-| ----------------- | -------- | -------- | ---------- |
-| poolName          | s        | 字符串   | IP地址     |
-| total             | 是       | 整数     | 地址总量   |
-| addressType       | 是       | 字符串   | 类型       |
-| creationTimestamp | 是       | 字符串   | 创建时间   |
-| usage             | s        | 浮点数   | DHCP使用率 |
+| 参数名称          | 是否必填 | 数据类型 | 备注         |
+| ----------------- | -------- | -------- | ------------ |
+| poolName          | s        | 字符串   | IP地址       |
+| total             | 是       | 整数     | 地址总量     |
+| addressType       | 是       | 字符串   | 类型         |
+| creationTimestamp | 是       | 字符串   | 创建时间     |
+| usage             | 是       | 浮点数   | DHCP使用率   |
+| validLifetime     | 是       | 整数     | 默认租赁时间 |
+| maxValidLifetime  | 是       | 整数     | 最大租赁时间 |
+| gateway           | 是       | 字符串   | 路由服务器   |
+| dnsServer         | 是       | 字符串   | 域名服务器   |
 
 
 
@@ -1647,6 +1651,10 @@
 		"poolName": "101.10.1.41-101.10.1.43"
 
 ​      "subnetv4Id": "547131748367302657",
+
+​      "maxValidLifetime": 232324,
+
+​      "validLifetime": 2324,
 
 ​      "gateway": "1.1.1.1",
 

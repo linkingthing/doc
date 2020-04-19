@@ -1520,8 +1520,8 @@
 | 请求方式 | POST                                                         |
 | 请求参数 | begin-address, string, 地址池开始地址                        |
 |          | end-address, string, 地址池结束地址                          |
-|          | valid-lifetime, string, 默认租赁时间                         |
-|          | max-valid-lifetime, string, 最大租赁时间                     |
+|          | valid-lifetime, int, 默认租赁时间                            |
+|          | max-valid-lifetime, int, 最大租赁时间                        |
 |          | gateway, string, 网关                                        |
 |          | dnsServer, string, 域名服务器                                |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X POST -d '{"beginAddress": "10.0.4.71",<br/>    "endAddress": "10.0.4.73",<br/>    "validLifetime": 2324,<br/>    "maxValidLifetime": 232324,<br/>    "gateway":"1.1.1.3",<br/>    "dnsServer":"2.2.2.3"}' |

@@ -1520,11 +1520,11 @@
 | 请求方式 | POST                                                         |
 | 请求参数 | begin-address, string, 地址池开始地址                        |
 |          | end-address, string, 地址池结束地址                          |
-|          | valid-lifetime, int, 默认租赁时间                            |
-|          | max-valid-lifetime, int, 最大租赁时间                        |
+|          | valid-lifetime, string, 默认租赁时间                         |
+|          | max-valid-lifetime, string, 最大租赁时间                     |
 |          | gateway, string, 网关                                        |
 |          | dnsServer, string, 域名服务器                                |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X POST -d '{"beginAddress": "10.0.4.71",<br/>    "endAddress": "10.0.4.73",<br/>    "validLifetime": 2324,<br/>    "maxValidLifetime": 232324,<br/>    "gateway":"1.1.1.3",<br/>    "dnsServer":"2.2.2.3"}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools -X POST -d '{"beginAddress": "10.0.4.71",<br/>    "endAddress": "10.0.4.73",<br/>    "validLifetime": "2324",<br/>    "maxValidLifetime": "232324",<br/>    "gateway":"1.1.1.3",<br/>    "dnsServer":"2.2.2.3"}' |
 
 - 返回数据示例
 
@@ -1558,8 +1558,8 @@
 
   "dnsServer": "2.2.2.2",//域名服务器
 
-​	"maxValidLifetime": 232324,//最大租赁时间
-​	"validLifetime": 2324//默认租赁时间
+​	"maxValidLifetime": "232324",//最大租赁时间
+​	"validLifetime": "2324"//默认租赁时间
 }
 
 
@@ -1739,11 +1739,11 @@
 | 请求方式 | PUT                                                          |
 | 请求参数 | beginAddress, string, 地址池开始地址                         |
 |          | endAddress, string, 地址池结束地址                           |
-|          | validLifetime, int, 默认租赁时间                             |
-|          | maxValidLifetime, int, 最大租赁时间                          |
+|          | validLifetime, string, 默认租赁时间                          |
+|          | maxValidLifetime, string, 最大租赁时间                       |
 |          | gateway,string,默认网关（应该在子网页面）                    |
 |          | dnsServer, string, 域名服务器(应该在子网页面)                |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541703561156001793 -X PUT -d '{"beginAddress":"101.10.1.41","endAddress":"101.10.1.43","validLifetime":23,"maxValidLifetime":3601}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541134712457986049/restpools/541703561156001793 -X PUT -d '{"beginAddress":"101.10.1.41","endAddress":"101.10.1.43","validLifetime":"23","maxValidLifetime":"3601"}' |
 
 - 返回数据示例
 
@@ -1768,9 +1768,9 @@
   
   "endAddress": "10.0.4.73",
   
-    "maxValidLifetime": 232324,
+    "maxValidLifetime": "232324",
   
-    "validLifetime": 2324,
+    "validLifetime": "2324",
   
     "total": 0,
   
@@ -1869,7 +1869,7 @@
 
 | 参数名称          | 是否必填 | 数据类型 | 备注       |
 | ----------------- | -------- | -------- | ---------- |
-| poolName          | s        | 字符串   | IP地址     |
+| poolName          | 是       | 字符串   | IP地址     |
 | total             | 是       | 整数     | 地址总量   |
 | addressType       | 是       | 字符串   | 类型       |
 | creationTimestamp | 是       | 字符串   | 创建时间   |

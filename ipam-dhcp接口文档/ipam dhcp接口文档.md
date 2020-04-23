@@ -49,7 +49,7 @@
 
 ​      "viewId": "", //视图id
 
-​      "notes": "" //备注
+​      "note": "" //备注
 
 - 返回数据示例
 
@@ -90,7 +90,7 @@
 
 ​      "viewId": "", //视图id
 
-​      "notes": "" //备注
+​      "note": "" //备注
 
 }
 
@@ -175,7 +175,7 @@
 
 ​      "viewId": "", //视图id
 
-​      "notes": "" //备注
+​      "note": "" //备注
 
 ​	}]
 }
@@ -253,7 +253,7 @@
 
   "viewId": "",
 
-  "notes": ""
+  "note": ""
 
 }
 
@@ -266,7 +266,7 @@
 | 接口功能 | 修改ipv4子网信息                                             |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:subnetv4Id  |
 | 请求方式 | POST                                                         |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089 -X PUT -d '{"subnet":"192.168.1.35/24", "name":"name352", "zoneName":"zone01","viewId":"12","dhcpEnable":1,"dnsEnable":1,"notes":"notessss"}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/541122915319513089 -X PUT -d '{"subnet":"192.168.1.35/24", "name":"name352", "zoneName":"zone01","viewId":"12","dhcpEnable":1,"dnsEnable":1,"note":"notessss"}' |
 |          |                                                              |
 
 | 参数名称   | 是否必填 | 数据类型 | 备注                            |
@@ -275,7 +275,7 @@
 | viewId     | 是       | string   | view ID                |
 | dhcpEnable | 是       | int      | 开启dhcp  1开启 0关闭           |
 | dnsEnable  | 是       | int      | 开启dns  1开启 0关闭 |
-| notes      | 是       | string   | 备注                            |
+| note      | 是       | string   | 备注                            |
 | gateway | 否 | string | 网关 |
 | dnsServer | 否 | string | 域名服务器 |
 
@@ -319,7 +319,7 @@
 
   "viewId": "",
 
-  "notes": "notessss"
+  "note": "notessss"
 
 }
 

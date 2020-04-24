@@ -852,7 +852,7 @@
 
 |接口描述|获取规划地址信息|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/dividedaddresses?subnetid=$id
+|请求地址|/apis/linkingthing.com/example/v1/restsubnetv4s/:restsubnetv4_id/ipaddresses
 |请求方式|HTTP/1.1 GET|
 |返回格式|JSON|
 
@@ -860,31 +860,31 @@
 
 |参数名称|是否必填|数据类型|备注|
 | - |-|-|-|
-|subnetid|是|整型|子网id|
+|restsubnetv4_id|是|整型|子网id|
 
 - 请求示例
 
-|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/dividedaddresses?subnetid=1|
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses|
 |-|-|
 |响应内容|如下引用|
 
 ```
 {
 	"type": "collection",
-	"resourceType": "dividedaddress",
+	"resourceType": "ipaddress",
 	"links": {
-		"self": "/apis/linkingthing.com/example/v1/dividedaddresses"
+		"self": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses"
 	},
 	"data": [{
-		"id": "547145299358351361",
-		"type": "dividedaddress",
+		"id": "549281636718051329",
+		"type": "ipaddress",
 		"links": {
-			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
-			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145299358351361"
+			"collection": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses",
+			"update": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281636718051329"
 		},
 		"creationTimestamp": null,
 		"deletionTimestamp": null,
-		"ip": "172.16.86.135",
+		"ip": "172.16.86.126",
 		"macaddress": "",
 		"macvender": "",
 		"AddressType": "dynamic",
@@ -910,15 +910,15 @@
 		"positionflag": false,
 		"position": ""
 	}, {
-		"id": "547145298037374977",
-		"type": "dividedaddress",
+		"id": "549281636731355137",
+		"type": "ipaddress",
 		"links": {
-			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
-			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145298037374977"
+			"collection": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses",
+			"update": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281636731355137"
 		},
 		"creationTimestamp": null,
 		"deletionTimestamp": null,
-		"ip": "172.16.86.199",
+		"ip": "172.16.86.21",
 		"macaddress": "",
 		"macvender": "",
 		"AddressType": "dynamic",
@@ -943,119 +943,17 @@
 		"department": "",
 		"positionflag": false,
 		"position": ""
-	}, {
-		"id": "547145299261095937",
-		"type": "dividedaddress",
+	}, ...
+	 {
+		"id": "549281639184367617",
+		"type": "ipaddress",
 		"links": {
-			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
-			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145299261095937"
+			"collection": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses",
+			"update": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281639184367617"
 		},
 		"creationTimestamp": null,
 		"deletionTimestamp": null,
-		"ip": "172.16.86.200",
-		"macaddress": "",
-		"macvender": "",
-		"AddressType": "dynamic",
-		"opersystem": "",
-		"netbiosname": "",
-		"hostname": "",
-		"interfaceid": "",
-		"scantime": 0,
-		"lastalivetime": 0,
-		"fingerprint": "",
-		"leasestarttime": 0,
-		"leaseendtime": 0,
-		"devicetypeflag": false,
-		"devicetype": "",
-		"businessflag": false,
-		"business": "",
-		"chargepersonflag": false,
-		"chargeperson": "",
-		"telflag": false,
-		"tel": "",
-		"departmentflag": false,
-		"department": "",
-		"positionflag": false,
-		"position": ""
-	}, {
-		"id": "547145298376720385",
-		"type": "dividedaddress",
-		"links": {
-			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
-			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145298376720385"
-		},
-		"creationTimestamp": null,
-		"deletionTimestamp": null,
-		"ip": "172.16.86.249",
-		"macaddress": "",
-		"macvender": "",
-		"AddressType": "unused",
-		"opersystem": "",
-		"netbiosname": "",
-		"hostname": "",
-		"interfaceid": "",
-		"scantime": 0,
-		"lastalivetime": 0,
-		"fingerprint": "",
-		"leasestarttime": 0,
-		"leaseendtime": 0,
-		"devicetypeflag": false,
-		"devicetype": "",
-		"businessflag": false,
-		"business": "",
-		"chargepersonflag": false,
-		"chargeperson": "",
-		"telflag": false,
-		"tel": "",
-		"departmentflag": false,
-		"department": "",
-		"positionflag": false,
-		"position": ""
-	},
-	... {
-		"id": "547145298591547393",
-		"type": "dividedaddress",
-		"links": {
-			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
-			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145298591547393"
-		},
-		"creationTimestamp": null,
-		"deletionTimestamp": null,
-		"ip": "172.16.86.83",
-		"macaddress": "",
-		"macvender": "",
-		"AddressType": "dynamic",
-		"opersystem": "",
-		"netbiosname": "",
-		"hostname": "",
-		"interfaceid": "",
-		"scantime": 0,
-		"lastalivetime": 0,
-		"fingerprint": "",
-		"leasestarttime": 0,
-		"leaseendtime": 0,
-		"devicetypeflag": false,
-		"devicetype": "",
-		"businessflag": false,
-		"business": "",
-		"chargepersonflag": false,
-		"chargeperson": "",
-		"telflag": false,
-		"tel": "",
-		"departmentflag": false,
-		"department": "",
-		"positionflag": false,
-		"position": ""
-	}, {
-		"id": "547145299625639937",
-		"type": "dividedaddress",
-		"links": {
-			"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
-			"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145299625639937"
-		},
-		"creationTimestamp": null,
-		"deletionTimestamp": null,
-		"ip": "172.16.86.127",
+		"ip": "172.16.86.149",
 		"macaddress": "",
 		"macvender": "",
 		"AddressType": "dynamic",
@@ -1112,12 +1010,12 @@
 |5|已分配地址|lease|string|"172.16.86.103"|
 |6|未使用地址|unused|string|"172.16.86.203"|
 
-### 2.2 IP地址属性设置
+### 2.2 IP地址设置
 - 接口信息  
 
-|接口描述|获取规划地址信息|
+|接口描述|设置IP地址属性|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/dividedaddresses?subnetid=$id
+|请求地址|/apis/linkingthing.com/example/v1/restsubnetv4s/:restsubnetv4_id/ipaddresses/:ipaddress_id
 |请求报文体|JSON报文|
 |请求方式|HTTP/1.1 PUT|
 |返回格式|JSON|
@@ -1162,12 +1060,12 @@
 
 - 请求示例
 
-|请求内容|http://10.0.0.19:8081//apis/linkingthing.com/example/v1/dividedaddresses/547145297842765825|
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281639174864897|
 |-|-|
 |请求内容|如下引用|
 ```
 {
-	"type": "dividedaddress",
+	"type": "ipaddress",
 	"ip": "172.16.86.29",
 	"macaddress": "1:1:1:1:1:1",
 	"macvender": "",
@@ -1201,11 +1099,12 @@
 
 ```
 {
-	"id": "547145297842765825",
-	"type": "dividedaddress",
+	"id": "549281639174864897",
+	"type": "ipaddress",
 	"links": {
-		"collection": "/apis/linkingthing.com/example/v1/dividedaddresses",
-		"update": "/apis/linkingthing.com/example/v1/dividedaddresses/547145297842765825"
+		"collection": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses",
+		"ipattrappends": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281639174864897/ipattrappends",
+		"update": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281639174864897"
 	},
 	"creationTimestamp": null,
 	"deletionTimestamp": null,
@@ -1242,7 +1141,7 @@
 
 |接口描述|获取规划地址信息|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/ipattrappends/:dividedaddress_id
+|请求地址|/apis/linkingthing.com/example/v1/restsubnetv4s/:restsubnetv4_id/ipaddresses/:ipaddress_id/ipattrappends/ipattrappend
 |请求报文体|JSON报文|
 |请求方式|HTTP/1.1 PUT|
 |返回格式|JSON|
@@ -1260,11 +1159,18 @@
 
 - 请求示例
 
-|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825|
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281638181011457/ipattrappends/ipattrappend|
 |-|-|
 |请求内容|如下引用|
 ```
-{"DeviceTypeFlag":true,"BusinessFlag":false,"ChargePersonFlag":false,"TelFlag":false,"DepartmentFlag":false,"PositionFlag":false}
+{
+	"DeviceTypeFlag": true,
+	"BusinessFlag": true,
+	"ChargePersonFlag": true,
+	"TelFlag": true,
+	"DepartmentFlag": true,
+	"PositionFlag": true
+}
 ```
 
 |-|-|
@@ -1272,20 +1178,20 @@
 
 ```
 {
-	"id": "547145297842765825",
+	"id": "ipattrappend",
 	"type": "ipattrappend",
 	"links": {
-		"self": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825",
-		"update": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825"
+		"self": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281638181011457/ipattrappends/ipattrappend",
+		"update": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281638181011457/ipattrappends/ipattrappend"
 	},
 	"creationTimestamp": null,
 	"deletionTimestamp": null,
 	"DeviceTypeFlag": true,
-	"BusinessFlag": false,
-	"ChargePersonFlag": false,
-	"TelFlag": false,
-	"DepartmentFlag": false,
-	"PositionFlag": false
+	"BusinessFlag": true,
+	"ChargePersonFlag": true,
+	"TelFlag": true,
+	"DepartmentFlag": true,
+	"PositionFlag": true
 }
 ```
 
@@ -1308,7 +1214,7 @@
 
 - 请求示例
 
-|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825|
+|请求内容|http://10.0.0.19:8081/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281638181011457/ipattrappends/ipattrappend|
 |-|-|
 |请求内容|如下引用|
 
@@ -1317,20 +1223,20 @@
 
 ```
 {
-	"id": "547145297842765825",
+	"id": "549281638181011457",
 	"type": "ipattrappend",
 	"links": {
-		"self": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825",
-		"update": "/apis/linkingthing.com/example/v1/ipattrappends/547145297842765825"
+		"self": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281638181011457/ipattrappends/549281638181011457",
+		"update": "/apis/linkingthing.com/example/v1/restsubnetv4s/1/ipaddresses/549281638181011457/ipattrappends/549281638181011457"
 	},
 	"creationTimestamp": null,
 	"deletionTimestamp": null,
-	"DeviceTypeFlag": false,
-	"BusinessFlag": false,
-	"ChargePersonFlag": false,
-	"TelFlag": false,
-	"DepartmentFlag": false,
-	"PositionFlag": false
+	"DeviceTypeFlag": true,
+	"BusinessFlag": true,
+	"ChargePersonFlag": true,
+	"TelFlag": true,
+	"DepartmentFlag": true,
+	"PositionFlag": true
 }
 ```
 

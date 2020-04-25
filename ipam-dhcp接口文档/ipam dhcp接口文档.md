@@ -1023,7 +1023,7 @@
 - 请求报文如下
 ```
 {
-	"type": "dividedaddress",
+	"type": "ipaddress",
 	"ip": "172.16.86.29",
 	"macaddress": "1:1:1:1:1:1",
 	"macvender": "",
@@ -1155,7 +1155,7 @@
 
 |参数名称|是否必填|数据类型|备注|
 | - |-|-|-|
-|dividedaddress_id|是|整型|单条IP信息记录的id,来自于2.1|
+|ipaddress_id|是|整型|单条IP信息记录的id,来自于2.1|
 
 - 请求示例
 
@@ -1200,7 +1200,7 @@
 
 |接口描述|获取规划地址信息|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/ipattrappends/:dividedaddress_id
+|请求地址|/apis/linkingthing.com/example/v1/ipattrappends/:ipaddress_id
 |请求报文体|无|
 |请求方式|HTTP/1.1 GET|
 |返回格式|JSON|
@@ -1210,7 +1210,7 @@
 
 |参数名称|是否必填|数据类型|备注|
 | - |-|-|-|
-|dividedaddress_id|是|整型|单条IP信息记录的id,来自于2.1|
+|ipaddress_id|是|整型|单条IP信息记录的id,来自于2.1|
 
 - 请求示例
 
@@ -1245,7 +1245,7 @@
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 添加option                                                   |
-| 接口地址 | /apis/linkingthing.com/example/v1/dividedaddresses/:id?action=change |
+| 接口地址 | restsubnetv4s/:restsubnetv4_id/ipaddresses/:ipaddress_id?action=change |
 | 请求方式 | POST                                                         |
 | 请求参数 | oper, string, 转换为什么类型 "tostable"(转固定)或"toresv"(转保留) |
 |          | data, json字符串, {"macaddress":"xx","ipaddress":"1.1.2.2","subnetv4Id":"542826129599365121","hwAddress":"00:01:02:03:04:05"} |
@@ -1255,7 +1255,7 @@
 |          | hwAddress, string, 转固定地址时，如果类型是硬件地址，要加此项 |
 |          |                                                              |
 |          | 示例：保留地址的几种配置情况，每一项可以作为一个固定或保留地址<br />"reservations": [<br/>    {<br/>        "hw-address": "aa:bb:cc:dd:ee:ff",<br/>        "hostname": "hw-host-dynamic" <br/>    },{<br/>        "hw-address": "01:02:03:04:05:06",<br/>        "hostname": "hw-host-fixed",<br/>        "ip-address": "192.0.1.77"<br/>    },{<br/>        "client-id":"01:11:22:33:44:55:66",<br/>        "hostname": "client-id-host" <br/>    }<br/>] |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "tostable",<br/>    "data": {<br/>       "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "544515252269514753",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/:restsubnetv4_id/ipaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "tostable",<br/>    "data": {<br/>       "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "544515252269514753",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
 
 - 请求参数意义
 
@@ -1287,7 +1287,7 @@
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 把一个地址转为保留地址                                       |
-| 接口地址 | /apis/linkingthing.com/example/v1/dividedaddresses/:id?action=change |
+| 接口地址 | /apis/linkingthing.com/example/v1/ipaddresses/:id?action=change |
 | 请求方式 | POST                                                         |
 | 请求参数 | oper, string, 转换为什么类型 "tostable"(转固定)或"toresv"(转保留) |
 |          | data, json字符串, {"duid":"123456","hostname":"duid-host","subnetv4Id":"542826129599365121"} |
@@ -1296,7 +1296,7 @@
 |          |                                                              |
 |          |                                                              |
 |          | 示例：保留地址的几种配置情况，每一项可以作为一个固定或保留地址<br />"reservations": [<br/>    {<br/>        "hw-address": "aa:bb:cc:dd:ee:ff",<br/>        "hostname": "hw-host-dynamic" <br/>    },{<br/>        "hw-address": "01:02:03:04:05:06",<br/>        "hostname": "hw-host-fixed",<br/>        "ip-address": "192.0.1.77"<br/>    },{<br/>        "duid":"01:02:03:04:05",<br/>        "hostname": "duid-host" <br/>    },{<br/>        "circuit-id": "'charter950'", <br/>        "hostname": "circuit-id-host"<br/>    },{<br/>        "client-id":"01:11:22:33:44:55:66",<br/>        "hostname": "client-id-host" <br/>    }<br/>] |
-| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/dividedaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "toresv",<br/>    "data": {<br/>        "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "547643604375863297",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
+| 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv4s/:restsubnetv4_id/ipaddresses/544515252269514753?action=change -X POST -d '{<br/>    "oper": "toresv",<br/>    "data": {<br/>        "ipaddress": "1.1.2.7",<br/>        "subnetv4Id": "547643604375863297",<br/>        "hwAddress": "00:01:02:03:04:17"<br/>    }<br/>}' |
 
 - 请求参数意义
 

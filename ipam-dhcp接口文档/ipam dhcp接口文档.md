@@ -1200,7 +1200,7 @@
 
 |接口描述|获取规划地址信息|
 |-|-|
-|请求地址|/apis/linkingthing.com/example/v1/ipattrappends/:ipaddress_id
+|请求地址|/apis/linkingthing.com/example/v1/restsubnetv4s/:restsubnetv4_id/ipaddresses/:ipaddress_id/ipattrappends/:ipaddress_id
 |请求报文体|无|
 |请求方式|HTTP/1.1 GET|
 |返回格式|JSON|
@@ -1245,7 +1245,7 @@
 | 功能     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 添加option                                                   |
-| 接口地址 | restsubnetv4s/:restsubnetv4_id/ipaddresses/:ipaddress_id?action=change |
+| 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv4s/:restsubnetv4_id/ipaddresses/:ipaddress_id?action=change |
 | 请求方式 | POST                                                         |
 | 请求参数 | oper, string, 转换为什么类型 "tostable"(转固定)或"toresv"(转保留) |
 |          | data, json字符串, {"macaddress":"xx","ipaddress":"1.1.2.2","subnetv4Id":"542826129599365121","hwAddress":"00:01:02:03:04:05"} |
@@ -1266,7 +1266,7 @@
 |          | subnetv4Id | 是       | 整型     | 子网id                          |
 |          | ipaddress  | 否       | 字符串   | ip地址                          |
 |          | hostname   | 否       | 字符串   | 主机名                          |
-|          |            |          |          | ipadderss和hostname至少要有一个 |
+|          |            |          |          | ipaddress和hostname至少要有一个 |
 |          | hwAddress  | 否       | 字符串   | 硬件地址                        |
 |          | clientId   | 否       | 字符串   | 客户端id                        |
 |          |            |          |          | hwAddress和clientId有且只有一个 |
@@ -1306,7 +1306,7 @@
   | data     |            | 是       | 数组     |                                  |
   |          | subnetv4Id | 是       | 整型     | 子网id                           |
   |          | hostname   | 是       | 字符串   | 主机名                           |
-  |          |            |          |          | ipadderss和hostname至少要有一个  |
+  |          |            |          |          | ipaddress和hostname至少要有一个  |
   |          | duid       | 否       | 字符串   | 设备唯一id                       |
   |          | circuitId  | 否       | 字符串   | 物理线路的id，转保留地址的参数   |
   |          |            |          |          | hwAddress和circuitId有且只有一个 |

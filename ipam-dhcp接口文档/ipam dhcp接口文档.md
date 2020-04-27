@@ -694,7 +694,7 @@
 | -------- | ------------------------------------------------------------ |
 | 接口功能 | 修改ipv6子网                                                 |
 | 接口地址 | /apis/linkingthing.com/example/v1/restsubnetv6s/:subnetv6Id  |
-| 请求方式 | POST                                                         |
+| 请求方式 | PUT                                                          |
 | 请求参数 | 与添加ipv6子网相同                                           |
 | 请求示例 | curl http://10.0.0.101:8081/apis/linkingthing.com/example/v1/restsubnetv6s/541122915319513089 -X PUT -d '{"subnet":"fe80:10::/64", "name":"name4", "validLifetime":"3602"}' |
 |          |                                                              |
@@ -1280,7 +1280,7 @@
 
 
 
-#### 2.3 转保留
+#### 2.6 转保留
 
 #### 
 
